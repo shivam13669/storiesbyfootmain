@@ -44,7 +44,10 @@ export function CurrencyPicker({
         <button
           type="button"
           className={cn(
-            "flex h-10 items-center gap-2 rounded-md border border-white/20 bg-white/10 px-3 text-sm text-white cursor-pointer hover:bg-white/15",
+            "flex h-10 items-center gap-2 rounded-md px-3 text-sm cursor-pointer font-medium",
+            variant === "dark"
+              ? "border border-white/20 bg-white/10 text-white hover:bg-white/15"
+              : "border-2 border-primary text-primary hover:bg-primary hover:text-white",
             className
           )}
           aria-label="Choose currency"
