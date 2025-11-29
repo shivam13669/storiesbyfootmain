@@ -43,7 +43,9 @@ export default function Login() {
               <h1 className="text-3xl font-display font-bold text-foreground">
                 Welcome Back
               </h1>
-              <p className="text-muted-foreground mt-2">Sign in to your account</p>
+              <p className="text-muted-foreground mt-2">
+                Sign in to your account
+              </p>
             </div>
 
             {/* Error Message */}
@@ -118,7 +120,9 @@ export default function Login() {
                   type="checkbox"
                   className="w-4 h-4 rounded border-border"
                 />
-                <span className="text-sm text-muted-foreground">Remember me</span>
+                <span className="text-sm text-muted-foreground">
+                  Remember me
+                </span>
               </label>
 
               {/* Submit Button */}

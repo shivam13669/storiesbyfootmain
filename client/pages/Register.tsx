@@ -207,7 +207,9 @@ export default function Register() {
                       <div
                         className={`w-1 h-1 rounded-full ${passwordStrength.hasNumber ? "bg-green-500" : "bg-gray-300"}`}
                       ></div>
-                      <span className="text-xs text-muted-foreground">One number</span>
+                      <span className="text-xs text-muted-foreground">
+                        One number
+                      </span>
                     </div>
                   </div>
                 )}

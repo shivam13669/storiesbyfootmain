@@ -56,7 +56,9 @@ export default function Services() {
                   <h3 className="text-xl font-bold text-foreground mb-2">
                     {service.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm">{service.description}</p>
+                  <p className="text-muted-foreground text-sm">
+                    {service.description}
+                  </p>
                 </div>
               );
             })}
