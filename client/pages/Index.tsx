@@ -294,6 +294,11 @@ export default function Index() {
                         {destination.rating}
                       </span>
                     </div>
+                    {destination.duration && (
+                      <div className="absolute bottom-4 left-4 bg-white px-3 py-1 rounded-full text-xs font-semibold text-primary">
+                        {destination.duration}
+                      </div>
+                    )}
                   </div>
 
                   {/* Content */}
