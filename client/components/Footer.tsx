@@ -103,6 +103,14 @@ export default function Footer() {
                   href="#"
                   className="text-gray-300 hover:text-primary transition-colors text-sm"
                 >
+                  Cookie Policy
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-300 hover:text-primary transition-colors text-sm"
+                >
                   Terms and Condition
                 </a>
               </li>
