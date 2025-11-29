@@ -96,11 +96,19 @@
     @apply border-border;
   }
 
-  body {
-    @apply bg-background text-foreground;
+  html {
+    @apply scroll-smooth;
   }
 
-  :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold;
+  }
+
+  :where(p, span, li, a, button, label, td, th) {
     overflow-wrap: anywhere;
     word-break: break-word;
   }
@@ -109,5 +117,9 @@
   code {
     overflow-x: auto;
     white-space: pre;
+  }
+
+  a {
+    @apply transition-colors;
   }
 }
