@@ -118,19 +118,19 @@ export default function Footer() {
               <li className="flex items-start gap-2">
                 <Phone className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                 <a
-                  href="tel:+919999999999"
+                  href="tel:+916205129118"
                   className="text-gray-300 hover:text-primary transition-colors text-sm"
                 >
-                  +91 9999 999 999
+                  +91 62051 29118
                 </a>
               </li>
               <li className="flex items-start gap-2">
                 <Mail className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                 <a
-                  href="mailto:info@storiesbyfoot.com"
+                  href="mailto:contact@storiesbyfoot.com"
                   className="text-gray-300 hover:text-primary transition-colors text-sm"
                 >
-                  info@storiesbyfoot.com
+                  contact@storiesbyfoot.com
                 </a>
               </li>
             </ul>

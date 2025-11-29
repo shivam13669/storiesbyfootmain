@@ -26,14 +26,14 @@ export default function Contact() {
     {
       icon: Mail,
       title: "Email",
-      details: "info@storiesbyfoot.com",
-      link: "mailto:info@storiesbyfoot.com",
+      details: "contact@storiesbyfoot.com",
+      link: "mailto:contact@storiesbyfoot.com",
     },
     {
       icon: Phone,
       title: "Phone",
-      details: "+91 9999 999 999",
-      link: "tel:+919999999999",
+      details: "+91 62051 29118",
+      link: "tel:+916205129118",
     },
     {
       icon: MapPin,
