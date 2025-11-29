@@ -66,7 +66,7 @@ export function CurrencyPicker({
             "flex h-10 items-center gap-2 rounded-md px-3 text-sm cursor-pointer font-medium",
             variant === "dark"
               ? "border border-white/20 bg-white/10 text-white hover:bg-white/15"
-              : "border-2 border-primary text-primary hover:bg-primary hover:text-white",
+              : "border border-gray-300 bg-gray-50 text-gray-700 hover:bg-gray-100 hover:border-primary",
             className,
           )}
           aria-label="Choose currency"
