@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { CurrencyPicker } from "./CurrencyPicker";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
