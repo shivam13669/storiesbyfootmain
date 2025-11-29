@@ -92,7 +92,7 @@ export default function About() {
 
               {/* Tagline */}
               <div className="text-center py-8 border-t border-gray-200">
-                <p className="text-2xl font-bold text-foreground">✦ Walk the Road. Live the Story.</p>
+                <p className="text-2xl font-bold text-foreground">Walk the Road. Live the Story.</p>
                 <p className="text-sm text-gray-500 mt-2">© 2025 StoriesByFoot. All rights reserved.</p>
               </div>
             </div>
