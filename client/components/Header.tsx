@@ -42,19 +42,19 @@ export default function Header() {
             ))}
           </div>
 
-          {/* Login Button - Desktop */}
+          {/* Sign Up Button - Desktop */}
           <div className="hidden lg:flex gap-4">
-            <Link
-              to="/login"
-              className="px-6 py-2 border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-lg font-medium transition-colors"
-            >
-              Login
-            </Link>
             <Link
               to="/register"
               className="px-6 py-2 bg-primary text-white rounded-lg font-medium hover:bg-orange-600 transition-colors"
             >
               Sign Up
+            </Link>
+            <Link
+              to="/login"
+              className="px-6 py-2 border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-lg font-medium transition-colors"
+            >
+              Login
             </Link>
           </div>
 
