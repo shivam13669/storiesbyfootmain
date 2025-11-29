@@ -44,14 +44,12 @@ export default function Header() {
             ))}
           </div>
 
-          {/* Sign Up Button - Desktop */}
-          <div className="hidden lg:flex gap-4">
-            <Link
-              to="/register"
-              className="px-6 py-2 bg-primary text-white rounded-lg font-medium hover:bg-orange-600 transition-colors"
-            >
-              Sign Up
-            </Link>
+          {/* Currency Picker & Login - Desktop */}
+          <div className="hidden lg:flex gap-4 items-center">
+            <CurrencyPicker
+              value={currency}
+              onChange={setCurrency}
+            />
             <Link
               to="/login"
               className="px-6 py-2 border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-lg font-medium transition-colors"
