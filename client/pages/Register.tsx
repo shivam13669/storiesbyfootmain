@@ -230,7 +230,7 @@ export default function Register() {
                       })
                     }
                     placeholder="••••••••"
-                    className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                    className="w-full pl-10 pr-12 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all bg-input text-foreground"
                   />
                   <button
                     type="button"
@@ -262,9 +262,9 @@ export default function Register() {
                   type="checkbox"
                   checked={agreedToTerms}
                   onChange={(e) => setAgreedToTerms(e.target.checked)}
-                  className="w-4 h-4 rounded border-gray-300 mt-1"
+                  className="w-4 h-4 rounded border-border mt-1"
                 />
-                <span className="text-xs text-gray-600">
+                <span className="text-xs text-muted-foreground">
                   I agree to the{" "}
                   <a
                     href="#"
@@ -294,10 +294,10 @@ export default function Register() {
             {/* Divider */}
             <div className="relative my-6">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300"></div>
+                <div className="w-full border-t border-border"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">
+                <span className="px-2 bg-card text-muted-foreground">
                   Or sign up with
                 </span>
               </div>
@@ -305,7 +305,7 @@ export default function Register() {
 
             {/* Social Login */}
             <div className="grid grid-cols-2 gap-4">
-              <button className="py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors font-medium text-sm">
+              <button className="py-2 border border-border rounded-lg hover:bg-input transition-colors font-medium text-sm text-foreground">
                 Google
               </button>
               <button className="py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors font-medium text-sm">
