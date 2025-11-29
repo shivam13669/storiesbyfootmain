@@ -36,7 +36,7 @@ export default function Header() {
               <span className="text-white font-bold text-lg">SF</span>
             </div>
             <span className="hidden sm:inline font-display text-xl font-bold text-foreground">
-              StoriesBy<span className="text-primary font-bold">Foot</span>
+              StoriesBy<span className="text-primary">Foot</span>
             </span>
           </Link>
 
