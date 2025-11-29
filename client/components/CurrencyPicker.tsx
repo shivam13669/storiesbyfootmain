@@ -9,10 +9,12 @@ export function CurrencyPicker({
   value,
   onChange,
   className,
+  variant = "dark",
 }: {
   value: string;
   onChange: (code: string) => void;
   className?: string;
+  variant?: "dark" | "light";
 }) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
