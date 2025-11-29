@@ -32,9 +32,11 @@ export default function Header() {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">SF</span>
-            </div>
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2Fa71fd292e62d4469a12da0a75ed96ba5%2Ff463248be6bc4dbf81a5307fb2c808dc?format=webp&width=800"
+              alt="StoriesByFoot"
+              className="w-10 h-10 object-contain"
+            />
             <span className="hidden sm:inline font-display text-xl font-bold text-foreground">
               StoriesBy<span className="text-primary">Foot</span>
             </span>
