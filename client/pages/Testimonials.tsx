@@ -50,7 +50,7 @@ export default function Testimonials() {
             {testimonials.map((testimonial) => (
               <div
                 key={testimonial.id}
-                className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all p-8"
+                className="bg-card rounded-xl shadow-md hover:shadow-lg transition-all p-8 border border-border"
               >
                 {/* Rating */}
                 <div className="flex gap-1 mb-4">
@@ -63,7 +63,7 @@ export default function Testimonials() {
                 </div>
 
                 {/* Testimonial Text */}
-                <p className="text-gray-600 mb-6 text-lg">
+                <p className="text-muted-foreground mb-6 text-lg">
                   "{testimonial.text}"
                 </p>
 
@@ -77,7 +77,7 @@ export default function Testimonials() {
                     <p className="font-bold text-foreground">
                       {testimonial.name}
                     </p>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-muted-foreground">
                       {testimonial.location}
                     </p>
                   </div>
@@ -89,9 +89,9 @@ export default function Testimonials() {
       </section>
 
       {/* Placeholder for More Testimonials */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-card">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl border-2 border-dashed border-primary p-12 text-center">
+          <div className="bg-background rounded-2xl border-2 border-dashed border-primary p-12 text-center">
             <div className="inline-flex items-center justify-center w-20 h-20 bg-primary/10 rounded-full mb-6">
               <MessageCircle className="w-10 h-10 text-primary" />
             </div>
