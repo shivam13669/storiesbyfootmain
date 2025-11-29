@@ -55,8 +55,8 @@ export function CurrencyPicker({
           aria-expanded={open}
         >
           <img src={flagSrc} alt={display.code} width={18} height={14} className="rounded-sm" />
-          <span className="font-medium">{display.code} {display.symbol}</span>
-          <ChevronDown className={cn("h-4 w-4 opacity-80 transition-transform", open && "rotate-180")} />
+          <span>{display.code} {display.symbol}</span>
+          <ChevronDown className={cn("h-4 w-4 transition-transform", open && "rotate-180")} />
         </button>
       </DialogTrigger>
       <DialogContent className="w-full max-w-3xl p-0">
