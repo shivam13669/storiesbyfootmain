@@ -101,7 +101,7 @@ export default function Login() {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-3.5 text-gray-400 hover:text-gray-600"
+                    className="absolute right-3 top-3.5 text-muted-foreground hover:text-foreground"
                   >
                     {showPassword ? (
                       <EyeOff className="w-5 h-5" />
@@ -116,9 +116,9 @@ export default function Login() {
               <label className="flex items-center gap-2 cursor-pointer">
                 <input
                   type="checkbox"
-                  className="w-4 h-4 rounded border-gray-300"
+                  className="w-4 h-4 rounded border-border"
                 />
-                <span className="text-sm text-gray-600">Remember me</span>
+                <span className="text-sm text-muted-foreground">Remember me</span>
               </label>
 
               {/* Submit Button */}
@@ -133,10 +133,10 @@ export default function Login() {
             {/* Divider */}
             <div className="relative my-6">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300"></div>
+                <div className="w-full border-t border-border"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">
+                <span className="px-2 bg-card text-muted-foreground">
                   Or continue with
                 </span>
               </div>
@@ -144,16 +144,16 @@ export default function Login() {
 
             {/* Social Login */}
             <div className="grid grid-cols-2 gap-4">
-              <button className="py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors font-medium text-sm">
+              <button className="py-2 border border-border rounded-lg hover:bg-input transition-colors font-medium text-sm text-foreground">
                 Google
               </button>
-              <button className="py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors font-medium text-sm">
+              <button className="py-2 border border-border rounded-lg hover:bg-input transition-colors font-medium text-sm text-foreground">
                 Facebook
               </button>
             </div>
 
             {/* Sign Up Link */}
-            <p className="text-center mt-6 text-gray-600 text-sm">
+            <p className="text-center mt-6 text-muted-foreground text-sm">
               Don't have an account?{" "}
               <Link
                 to="/register"

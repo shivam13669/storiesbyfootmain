@@ -15,7 +15,7 @@ const NotFound = () => {
 
   return (
     <Layout>
-      <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-orange-50 px-4">
+      <section className="min-h-screen flex items-center justify-center bg-background px-4">
         <div className="text-center max-w-md">
           <div className="mb-8">
             <h1 className="text-9xl font-display font-bold text-primary mb-4">
@@ -24,7 +24,7 @@ const NotFound = () => {
             <p className="text-2xl font-display font-bold text-foreground mb-2">
               Page Not Found
             </p>
-            <p className="text-gray-600 mb-6">
+            <p className="text-muted-foreground mb-6">
               The page you're looking for doesn't exist or has been moved.
             </p>
           </div>

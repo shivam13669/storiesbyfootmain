@@ -64,9 +64,9 @@ export default function Register() {
 
   return (
     <Layout>
-      <section className="min-h-screen bg-gradient-to-br from-blue-50 to-orange-50 py-12 px-4 sm:px-6 lg:px-8">
+      <section className="min-h-screen bg-background py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-2xl p-8">
+          <div className="bg-card rounded-2xl shadow-2xl p-8 border border-border">
             {/* Header */}
             <div className="text-center mb-8">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-lg mb-4">
@@ -75,7 +75,7 @@ export default function Register() {
               <h1 className="text-3xl font-display font-bold text-foreground">
                 Create Account
               </h1>
-              <p className="text-gray-600 mt-2">
+              <p className="text-muted-foreground mt-2">
                 Join us for amazing travel experiences
               </p>
             </div>
