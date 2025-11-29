@@ -58,6 +58,7 @@ export default function Header() {
             <CurrencyPicker
               value={currency}
               onChange={setCurrency}
+              variant="light"
             />
             <Link
               to="/login"
