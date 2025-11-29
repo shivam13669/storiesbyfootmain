@@ -6,7 +6,7 @@ import { CurrencyPicker } from "./CurrencyPicker";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [currency, setCurrency] = useState("USD");
+  const [currency, setCurrency] = useState("INR");
 
   const navItems = [
     { label: "Home", path: "/" },
