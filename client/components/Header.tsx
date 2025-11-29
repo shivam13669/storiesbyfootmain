@@ -16,7 +16,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white shadow-lg z-50">
+    <header className="fixed top-0 left-0 right-0 bg-background shadow-lg z-50 border-b border-border">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
@@ -70,7 +70,7 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="lg:hidden pb-4 border-t border-gray-200">
+          <div className="lg:hidden pb-4 border-t border-border">
             <div className="flex flex-col gap-4 pt-4">
               {navItems.map((item) => (
                 <Link
@@ -82,7 +82,7 @@ export default function Header() {
                   {item.label}
                 </Link>
               ))}
-              <div className="flex gap-2 pt-4 border-t border-gray-200">
+              <div className="flex gap-2 pt-4 border-t border-border">
                 <Link
                   to="/login"
                   className="flex-1 px-4 py-2 border-2 border-primary text-primary rounded-lg font-medium text-center"
