@@ -61,7 +61,7 @@ export default function Login() {
                   Email Address
                 </label>
                 <div className="relative">
-                  <Mail className="absolute left-3 top-3.5 w-5 h-5 text-gray-400" />
+                  <Mail className="absolute left-3 top-3.5 w-5 h-5 text-muted-foreground" />
                   <input
                     type="email"
                     value={formData.email}
@@ -69,7 +69,7 @@ export default function Login() {
                       setFormData({ ...formData, email: e.target.value })
                     }
                     placeholder="you@example.com"
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                    className="w-full pl-10 pr-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all bg-input text-foreground"
                   />
                 </div>
               </div>
@@ -88,7 +88,7 @@ export default function Login() {
                   </Link>
                 </div>
                 <div className="relative">
-                  <Lock className="absolute left-3 top-3.5 w-5 h-5 text-gray-400" />
+                  <Lock className="absolute left-3 top-3.5 w-5 h-5 text-muted-foreground" />
                   <input
                     type={showPassword ? "text" : "password"}
                     value={formData.password}
@@ -96,7 +96,7 @@ export default function Login() {
                       setFormData({ ...formData, password: e.target.value })
                     }
                     placeholder="••••••••"
-                    className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                    className="w-full pl-10 pr-12 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all bg-input text-foreground"
                   />
                   <button
                     type="button"
