@@ -96,7 +96,7 @@ export default function Register() {
                     First Name
                   </label>
                   <div className="relative">
-                    <User className="absolute left-3 top-3.5 w-5 h-5 text-gray-400" />
+                    <User className="absolute left-3 top-3.5 w-5 h-5 text-muted-foreground" />
                     <input
                       type="text"
                       value={formData.firstName}
@@ -104,7 +104,7 @@ export default function Register() {
                         setFormData({ ...formData, firstName: e.target.value })
                       }
                       placeholder="John"
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                      className="w-full pl-10 pr-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all bg-input text-foreground"
                     />
                   </div>
                 </div>
@@ -114,7 +114,7 @@ export default function Register() {
                     Last Name
                   </label>
                   <div className="relative">
-                    <User className="absolute left-3 top-3.5 w-5 h-5 text-gray-400" />
+                    <User className="absolute left-3 top-3.5 w-5 h-5 text-muted-foreground" />
                     <input
                       type="text"
                       value={formData.lastName}
@@ -122,7 +122,7 @@ export default function Register() {
                         setFormData({ ...formData, lastName: e.target.value })
                       }
                       placeholder="Doe"
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                      className="w-full pl-10 pr-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all bg-input text-foreground"
                     />
                   </div>
                 </div>
@@ -134,7 +134,7 @@ export default function Register() {
                   Email Address
                 </label>
                 <div className="relative">
-                  <Mail className="absolute left-3 top-3.5 w-5 h-5 text-gray-400" />
+                  <Mail className="absolute left-3 top-3.5 w-5 h-5 text-muted-foreground" />
                   <input
                     type="email"
                     value={formData.email}
@@ -142,7 +142,7 @@ export default function Register() {
                       setFormData({ ...formData, email: e.target.value })
                     }
                     placeholder="you@example.com"
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                    className="w-full pl-10 pr-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all bg-input text-foreground"
                   />
                 </div>
               </div>
@@ -153,7 +153,7 @@ export default function Register() {
                   Password
                 </label>
                 <div className="relative">
-                  <Lock className="absolute left-3 top-3.5 w-5 h-5 text-gray-400" />
+                  <Lock className="absolute left-3 top-3.5 w-5 h-5 text-muted-foreground" />
                   <input
                     type={showPassword ? "text" : "password"}
                     value={formData.password}
@@ -161,12 +161,12 @@ export default function Register() {
                       setFormData({ ...formData, password: e.target.value })
                     }
                     placeholder="••••••••"
-                    className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                    className="w-full pl-10 pr-12 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all bg-input text-foreground"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-3.5 text-gray-400 hover:text-gray-600"
+                    className="absolute right-3 top-3.5 text-muted-foreground hover:text-foreground"
                   >
                     {showPassword ? (
                       <EyeOff className="w-5 h-5" />
@@ -181,9 +181,9 @@ export default function Register() {
                   <div className="mt-3 space-y-2">
                     <div className="flex items-center gap-2">
                       <div
-                        className={`w-1 h-1 rounded-full ${passwordStrength.hasLength ? "bg-green-500" : "bg-gray-300"}`}
+                        className={`w-1 h-1 rounded-full ${passwordStrength.hasLength ? "bg-green-500" : "bg-border"}`}
                       ></div>
-                      <span className="text-xs text-gray-600">
+                      <span className="text-xs text-muted-foreground">
                         At least 8 characters
                       </span>
                     </div>
@@ -191,7 +191,7 @@ export default function Register() {
                       <div
                         className={`w-1 h-1 rounded-full ${passwordStrength.hasUpperCase ? "bg-green-500" : "bg-gray-300"}`}
                       ></div>
-                      <span className="text-xs text-gray-600">
+                      <span className="text-xs text-muted-foreground">
                         One uppercase letter
                       </span>
                     </div>
@@ -199,7 +199,7 @@ export default function Register() {
                       <div
                         className={`w-1 h-1 rounded-full ${passwordStrength.hasLowerCase ? "bg-green-500" : "bg-gray-300"}`}
                       ></div>
-                      <span className="text-xs text-gray-600">
+                      <span className="text-xs text-muted-foreground">
                         One lowercase letter
                       </span>
                     </div>
@@ -207,7 +207,7 @@ export default function Register() {
                       <div
                         className={`w-1 h-1 rounded-full ${passwordStrength.hasNumber ? "bg-green-500" : "bg-gray-300"}`}
                       ></div>
-                      <span className="text-xs text-gray-600">One number</span>
+                      <span className="text-xs text-muted-foreground">One number</span>
                     </div>
                   </div>
                 )}
@@ -235,7 +235,7 @@ export default function Register() {
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute right-3 top-3.5 text-gray-400 hover:text-gray-600"
+                    className="absolute right-3 top-3.5 text-muted-foreground hover:text-foreground"
                   >
                     {showConfirmPassword ? (
                       <EyeOff className="w-5 h-5" />
