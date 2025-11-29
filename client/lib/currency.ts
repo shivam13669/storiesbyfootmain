@@ -35,14 +35,13 @@ export const CURRENCIES: Currency[] = [
 ];
 
 export const COMMON_CODES = [
+  "INR",
   "USD",
   "EUR",
   "GBP",
-  "JPY",
-  "AUD",
-  "CAD",
-  "INR",
+  "AED",
   "SGD",
+  "AUD",
 ] as const;
 
 export const FLAG_BY_CURRENCY: Record<string, string> = {
