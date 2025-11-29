@@ -5,12 +5,12 @@ export default function About() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 to-orange-50 py-16">
+      <section className="bg-background py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-5xl md:text-6xl font-display font-bold text-foreground mb-6">
             About StoriesByFoot
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl">
+          <p className="text-xl text-muted-foreground max-w-2xl">
             Discover our mission, values, and the story behind StoriesByFoot
           </p>
         </div>
@@ -26,11 +26,11 @@ export default function About() {
             <h2 className="text-3xl font-display font-bold text-foreground mb-4">
               About Page
             </h2>
-            <p className="text-lg text-gray-600 mb-6">
+            <p className="text-lg text-muted-foreground mb-6">
               This page is ready to showcase your company story, mission, and
               values.
             </p>
-            <p className="text-gray-500 italic">
+            <p className="text-muted-foreground italic">
               Prompt the AI to fill in this page with your company information,
               team members, history, and values.
             </p>
@@ -45,7 +45,7 @@ export default function About() {
               <h3 className="text-xl font-bold text-foreground mb-2">
                 Innovation
               </h3>
-              <p className="text-gray-600">
+              <p className="text-muted-foreground">
                 Placeholder for your company's innovation values
               </p>
             </div>
@@ -56,7 +56,7 @@ export default function About() {
               <h3 className="text-xl font-bold text-foreground mb-2">
                 Excellence
               </h3>
-              <p className="text-gray-600">
+              <p className="text-muted-foreground">
                 Placeholder for your company's excellence values
               </p>
             </div>
@@ -67,7 +67,7 @@ export default function About() {
               <h3 className="text-xl font-bold text-foreground mb-2">
                 Community
               </h3>
-              <p className="text-gray-600">
+              <p className="text-muted-foreground">
                 Placeholder for your company's community values
               </p>
             </div>

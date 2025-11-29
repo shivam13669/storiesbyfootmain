@@ -52,12 +52,12 @@ export default function Contact() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 to-orange-50 py-16">
+      <section className="bg-background py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-5xl md:text-6xl font-display font-bold text-foreground mb-6">
             Get in Touch
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl">
+          <p className="text-xl text-muted-foreground max-w-2xl">
             Have questions? We'd love to hear from you. Send us a message!
           </p>
         </div>
@@ -74,7 +74,7 @@ export default function Contact() {
                 <a
                   key={index}
                   href={info.link}
-                  className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all p-8 text-center"
+                  className="bg-card rounded-xl shadow-md hover:shadow-lg transition-all p-8 text-center border border-border"
                 >
                   <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
                     <Icon className="w-8 h-8 text-primary" />
@@ -82,7 +82,7 @@ export default function Contact() {
                   <h3 className="text-xl font-bold text-foreground mb-2">
                     {info.title}
                   </h3>
-                  <p className="text-gray-600">{info.details}</p>
+                  <p className="text-muted-foreground">{info.details}</p>
                 </a>
               );
             })}
@@ -90,7 +90,7 @@ export default function Contact() {
 
           {/* Contact Form */}
           <div className="max-w-2xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-lg p-8">
+            <div className="bg-card rounded-2xl shadow-lg p-8 border border-border">
               <h2 className="text-3xl font-display font-bold text-foreground mb-8">
                 Send us a Message
               </h2>
