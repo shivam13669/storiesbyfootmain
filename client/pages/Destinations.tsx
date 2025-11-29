@@ -159,12 +159,12 @@ export default function Destinations() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 to-orange-50 py-12">
+      <section className="bg-background py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-4">
             Explore Destinations
           </h1>
-          <p className="text-gray-600 max-w-2xl">
+          <p className="text-muted-foreground max-w-2xl">
             Find your perfect travel destination from our curated collection
           </p>
         </div>
@@ -176,7 +176,7 @@ export default function Destinations() {
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
             {/* Sidebar Filters */}
             <div className="lg:col-span-1">
-              <div className="bg-white rounded-xl shadow-md p-6 sticky top-24">
+              <div className="bg-card rounded-xl shadow-md p-6 sticky top-24 border border-border">
                 <h3 className="flex items-center gap-2 text-lg font-bold text-foreground mb-6">
                   <Filter className="w-5 h-5" />
                   Filters
@@ -188,13 +188,13 @@ export default function Destinations() {
                     Search
                   </label>
                   <div className="relative">
-                    <Search className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
+                    <Search className="absolute left-3 top-3 w-4 h-4 text-primary" />
                     <input
                       type="text"
                       placeholder="Search..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full pl-9 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-sm"
+                      className="w-full pl-9 pr-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-sm bg-input text-foreground"
                     />
                   </div>
                 </div>
@@ -218,7 +218,7 @@ export default function Destinations() {
                           onChange={(e) => setSelectedCategory(e.target.value)}
                           className="w-4 h-4"
                         />
-                        <span className="text-sm text-gray-700">{cat}</span>
+                        <span className="text-sm text-foreground">{cat}</span>
                       </label>
                     ))}
                   </div>
@@ -263,7 +263,7 @@ export default function Destinations() {
             {/* Destinations Grid */}
             <div className="lg:col-span-3">
               <div className="mb-6 flex justify-between items-center">
-                <p className="text-gray-600">
+                <p className="text-muted-foreground">
                   Showing{" "}
                   <span className="font-semibold">
                     {filteredDestinations.length}
@@ -303,7 +303,7 @@ export default function Destinations() {
                           <h3 className="text-2xl font-bold text-foreground mb-1">
                             {destination.name}
                           </h3>
-                          <p className="text-gray-500 text-sm mb-3 flex items-center gap-1">
+                          <p className="text-muted-foreground text-sm mb-3 flex items-center gap-1">
                             <MapPin className="w-4 h-4" />
                             {destination.location}
                           </p>

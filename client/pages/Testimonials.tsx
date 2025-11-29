@@ -32,12 +32,12 @@ export default function Testimonials() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 to-orange-50 py-16">
+      <section className="bg-background py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-5xl md:text-6xl font-display font-bold text-foreground mb-6">
             What Our Travelers Say
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl">
+          <p className="text-xl text-muted-foreground max-w-2xl">
             Read stories from our happy customers
           </p>
         </div>
