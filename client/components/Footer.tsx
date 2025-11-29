@@ -91,28 +91,28 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/privacy-policy"
                   className="text-gray-300 hover:text-primary transition-colors text-sm"
                 >
                   Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/cookie-policy"
                   className="text-gray-300 hover:text-primary transition-colors text-sm"
                 >
                   Cookie Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/terms-and-conditions"
                   className="text-gray-300 hover:text-primary transition-colors text-sm"
                 >
-                  Terms and Condition
-                </a>
+                  Terms and Conditions
+                </Link>
               </li>
             </ul>
           </div>
