@@ -22,7 +22,8 @@ export default function Destinations() {
       name: "Xtreme Ladakh Expedition",
       location: "India",
       image: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-      description: "Conquer Khardung La, trace the Shyok River, and camp under galaxy-bright skies at Pangong Tso",
+      description:
+        "Conquer Khardung La, trace the Shyok River, and camp under galaxy-bright skies at Pangong Tso",
       rating: 4.9,
       price: 475,
       category: "Adventure",
@@ -33,7 +34,8 @@ export default function Destinations() {
       name: "Ladakh Bike Adventure",
       location: "India",
       image: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-      description: "A spirited bike tour covering Magnetic Hill, Sangam, and the dunes of Hunder with backup vehicle support",
+      description:
+        "A spirited bike tour covering Magnetic Hill, Sangam, and the dunes of Hunder with backup vehicle support",
       rating: 4.8,
       price: 420,
       category: "Adventure",
@@ -44,7 +46,8 @@ export default function Destinations() {
       name: "Ladakh Highlights Private Tour",
       location: "India",
       image: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
-      description: "Comfort-first itinerary with boutique stays, private SUV transfers, and immersive monastery visits",
+      description:
+        "Comfort-first itinerary with boutique stays, private SUV transfers, and immersive monastery visits",
       rating: 4.7,
       price: 365,
       category: "Luxury",
@@ -55,7 +58,8 @@ export default function Destinations() {
       name: "Tawang Monastery Trek",
       location: "India",
       image: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
-      description: "Explore the highest monastery in India and scenic mountain landscapes of Arunachal Pradesh",
+      description:
+        "Explore the highest monastery in India and scenic mountain landscapes of Arunachal Pradesh",
       rating: 4.8,
       price: 325,
       category: "Adventure",
@@ -66,7 +70,8 @@ export default function Destinations() {
       name: "Bhutan Cultural Tour",
       location: "India",
       image: "linear-gradient(135deg, #30cfd0 0%, #330867 100%)",
-      description: "Experience the kingdom of happiness with pristine nature and ancient Buddhist traditions",
+      description:
+        "Experience the kingdom of happiness with pristine nature and ancient Buddhist traditions",
       rating: 4.9,
       price: 510,
       category: "Adventure",
@@ -77,7 +82,8 @@ export default function Destinations() {
       name: "Meghalaya Living Roots Trek",
       location: "India",
       image: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
-      description: "Trek through living root bridges and misty hills in the wettest place on Earth",
+      description:
+        "Trek through living root bridges and misty hills in the wettest place on Earth",
       rating: 4.7,
       price: 300,
       category: "Adventure",
@@ -88,7 +94,8 @@ export default function Destinations() {
       name: "Nepal Everest Base Camp",
       location: "Nepal",
       image: "linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%)",
-      description: "Trek to the base camp of the world's highest mountain with experienced guides",
+      description:
+        "Trek to the base camp of the world's highest mountain with experienced guides",
       rating: 4.9,
       price: 550,
       category: "Adventure",
@@ -99,7 +106,8 @@ export default function Destinations() {
       name: "Zanskar Winter Trek",
       location: "India",
       image: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-      description: "Traverse the frozen river of Zanskar Valley, one of the most thrilling treks in the world",
+      description:
+        "Traverse the frozen river of Zanskar Valley, one of the most thrilling treks in the world",
       rating: 4.8,
       price: 495,
       category: "Adventure",
@@ -110,7 +118,8 @@ export default function Destinations() {
       name: "Spiti Valley Exploration",
       location: "India",
       image: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-      description: "Discover ancient monasteries, barren landscapes, and the mystical land of Spiti",
+      description:
+        "Discover ancient monasteries, barren landscapes, and the mystical land of Spiti",
       rating: 4.8,
       price: 410,
       category: "Adventure",

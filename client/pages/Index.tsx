@@ -30,7 +30,8 @@ export default function Index() {
       name: "Xtreme Ladakh Expedition",
       location: "India",
       image: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-      description: "Conquer Khardung La, trace the Shyok River, and camp under galaxy-bright skies",
+      description:
+        "Conquer Khardung La, trace the Shyok River, and camp under galaxy-bright skies",
       rating: 4.9,
       price: "₹38,500",
       duration: "6 days",
@@ -40,7 +41,8 @@ export default function Index() {
       name: "Ladakh Bike Adventure",
       location: "India",
       image: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-      description: "A spirited bike tour covering Magnetic Hill, Sangam, and the dunes of Hunder",
+      description:
+        "A spirited bike tour covering Magnetic Hill, Sangam, and the dunes of Hunder",
       rating: 4.8,
       price: "₹34,200",
       duration: "7 days",
@@ -50,7 +52,8 @@ export default function Index() {
       name: "Ladakh Highlights Private Tour",
       location: "India",
       image: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
-      description: "Comfort-first itinerary with boutique stays, private SUV transfers, and monastery visits",
+      description:
+        "Comfort-first itinerary with boutique stays, private SUV transfers, and monastery visits",
       rating: 4.7,
       price: "₹29,900",
       duration: "6 days",
@@ -60,7 +63,8 @@ export default function Index() {
       name: "Tawang Monastery Trek",
       location: "India",
       image: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
-      description: "Explore the highest monastery and scenic mountain landscapes",
+      description:
+        "Explore the highest monastery and scenic mountain landscapes",
       rating: 4.8,
       price: "₹26,500",
       duration: "5 days",
@@ -70,7 +74,8 @@ export default function Index() {
       name: "Bhutan Cultural Tour",
       location: "India",
       image: "linear-gradient(135deg, #30cfd0 0%, #330867 100%)",
-      description: "Experience the kingdom of happiness with pristine nature and ancient traditions",
+      description:
+        "Experience the kingdom of happiness with pristine nature and ancient traditions",
       rating: 4.9,
       price: "₹42,000",
       duration: "7 days",
@@ -80,7 +85,8 @@ export default function Index() {
       name: "Meghalaya Adventure",
       location: "India",
       image: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
-      description: "Trek through living root bridges and misty hills in the land of clouds",
+      description:
+        "Trek through living root bridges and misty hills in the land of clouds",
       rating: 4.7,
       price: "₹24,900",
       duration: "5 days",
