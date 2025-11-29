@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -6,7 +6,16 @@ import { CurrencyPicker } from "./CurrencyPicker";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [currency, setCurrency] = useState("INR");
+  const [currency, setCurrency] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("selectedCurrency") || "INR";
+    }
+    return "INR";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("selectedCurrency", currency);
+  }, [currency]);
 
   const navItems = [
     { label: "Home", path: "/" },
