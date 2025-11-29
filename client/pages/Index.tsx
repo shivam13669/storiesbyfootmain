@@ -119,7 +119,7 @@ export default function Index() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50 overflow-hidden">
+      <section className="relative h-screen bg-background overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -mr-48 -mt-48"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl -ml-48 -mb-48"></div>
@@ -130,14 +130,14 @@ export default function Index() {
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-display font-bold text-foreground mb-6">
               Explore Your <span className="text-primary">Next Adventure</span>
             </h1>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-8">
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
               Discover extraordinary destinations, create unforgettable memories
               with StoriesByFoot
             </p>
           </div>
 
           {/* Search Form */}
-          <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 max-w-4xl mx-auto w-full">
+          <div className="bg-card rounded-2xl shadow-2xl p-6 sm:p-8 max-w-4xl mx-auto w-full">
             <form
               onSubmit={handleSearch}
               className="grid grid-cols-1 md:grid-cols-4 gap-4"
@@ -159,7 +159,7 @@ export default function Index() {
                         destination: e.target.value,
                       })
                     }
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                    className="w-full pl-10 pr-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-input text-foreground"
                   />
                 </div>
               </div>
@@ -180,7 +180,7 @@ export default function Index() {
                         checkIn: e.target.value,
                       })
                     }
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                    className="w-full pl-10 pr-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-input text-foreground"
                   />
                 </div>
               </div>
@@ -201,7 +201,7 @@ export default function Index() {
                         checkOut: e.target.value,
                       })
                     }
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                    className="w-full pl-10 pr-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-input text-foreground"
                   />
                 </div>
               </div>
@@ -219,7 +219,7 @@ export default function Index() {
                       travelers: e.target.value,
                     })
                   }
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                  className="w-full px-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-input text-foreground"
                 >
                   <option>1 Person</option>
                   <option>2 People</option>
@@ -242,12 +242,12 @@ export default function Index() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-16 sm:py-20 bg-white">
+      <section className="py-16 sm:py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl md:text-5xl font-display font-bold text-center text-foreground mb-4">
             Why StoriesByFoot?
           </h2>
-          <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
+          <p className="text-center text-muted-foreground max-w-2xl mx-auto mb-12">
             We make travel simple, memorable, and unforgettable
           </p>
 
@@ -262,7 +262,7 @@ export default function Index() {
                   <h3 className="text-xl font-bold text-foreground mb-2">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600 text-sm">{feature.description}</p>
+                  <p className="text-muted-foreground text-sm">{feature.description}</p>
                 </div>
               );
             })}
@@ -271,12 +271,12 @@ export default function Index() {
       </section>
 
       {/* Featured Destinations */}
-      <section className="py-16 sm:py-20 bg-gray-50">
+      <section className="py-16 sm:py-20 bg-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl md:text-5xl font-display font-bold text-center text-foreground mb-4">
             Featured Destinations
           </h2>
-          <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
+          <p className="text-center text-muted-foreground max-w-2xl mx-auto mb-12">
             Explore hand-picked destinations around the world
           </p>
 
@@ -287,7 +287,7 @@ export default function Index() {
                 to={`/destinations/${destination.id}`}
                 className="group"
               >
-                <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 h-full">
+                <div className="bg-card rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 h-full border border-border">
                   {/* Image */}
                   <div
                     className="h-48 bg-gradient-to-br relative overflow-hidden"
@@ -312,11 +312,11 @@ export default function Index() {
                     <h3 className="text-2xl font-bold text-foreground mb-1">
                       {destination.name}
                     </h3>
-                    <p className="text-gray-500 text-sm mb-3 flex items-center gap-1">
+                    <p className="text-muted-foreground text-sm mb-3 flex items-center gap-1">
                       <MapPin className="w-4 h-4" />
                       {destination.location}
                     </p>
-                    <p className="text-gray-600 text-sm mb-4">
+                    <p className="text-muted-foreground text-sm mb-4">
                       {destination.description}
                     </p>
                     <div className="flex items-center justify-between">
