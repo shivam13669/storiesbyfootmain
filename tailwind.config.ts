@@ -5,6 +5,11 @@ export default {
   content: ["./client/**/*.{ts,tsx}"],
   prefix: "",
   theme: {
+    fontFamily: {
+      display: ["Playfair Display", "serif"],
+      body: ["Poppins", "sans-serif"],
+      outfit: ["Outfit", "sans-serif"],
+    },
     container: {
       center: true,
       padding: "2rem",
