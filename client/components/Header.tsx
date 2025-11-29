@@ -83,13 +83,13 @@ export default function Header() {
                 </Link>
               ))}
               <div className="flex gap-2 pt-4 border-t border-gray-200">
-                <Link
-                  to="/register"
-                  className="flex-1 px-4 py-2 bg-primary text-white rounded-lg font-medium text-center"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Sign Up
-                </Link>
+                <div className="flex-1">
+                  <CurrencyPicker
+                    value={currency}
+                    onChange={setCurrency}
+                    className="w-full justify-center"
+                  />
+                </div>
                 <Link
                   to="/login"
                   className="flex-1 px-4 py-2 border-2 border-primary text-primary rounded-lg font-medium text-center"
