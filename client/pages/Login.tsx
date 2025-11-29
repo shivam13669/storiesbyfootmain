@@ -14,7 +14,7 @@ export default function Login() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!formData.email || !formData.password) {
       setError("Please fill in all fields");
       return;
@@ -136,7 +136,9 @@ export default function Login() {
                 <div className="w-full border-t border-gray-300"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">Or continue with</span>
+                <span className="px-2 bg-white text-gray-500">
+                  Or continue with
+                </span>
               </div>
             </div>
 
@@ -153,7 +155,10 @@ export default function Login() {
             {/* Sign Up Link */}
             <p className="text-center mt-6 text-gray-600 text-sm">
               Don't have an account?{" "}
-              <Link to="/register" className="text-primary font-semibold hover:text-orange-600 transition-colors">
+              <Link
+                to="/register"
+                className="text-primary font-semibold hover:text-orange-600 transition-colors"
+              >
                 Sign up
               </Link>
             </p>

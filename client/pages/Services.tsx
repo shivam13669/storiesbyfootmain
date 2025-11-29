@@ -6,22 +6,22 @@ export default function Services() {
     {
       icon: MapPinned,
       title: "Destination Planning",
-      description: "Personalized itineraries tailored to your preferences"
+      description: "Personalized itineraries tailored to your preferences",
     },
     {
       icon: Plane,
       title: "Flight Booking",
-      description: "Best deals on flights from major airlines"
+      description: "Best deals on flights from major airlines",
     },
     {
       icon: Hotel,
       title: "Accommodation",
-      description: "Wide range of hotels, resorts, and homestays"
+      description: "Wide range of hotels, resorts, and homestays",
     },
     {
       icon: MapPin,
       title: "Local Experiences",
-      description: "Authentic guided tours and activities"
+      description: "Authentic guided tours and activities",
     },
   ];
 
@@ -46,16 +46,17 @@ export default function Services() {
             {services.map((service, index) => {
               const Icon = service.icon;
               return (
-                <div key={index} className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all p-6">
+                <div
+                  key={index}
+                  className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all p-6"
+                >
                   <div className="inline-flex items-center justify-center w-14 h-14 bg-primary/10 rounded-full mb-4">
                     <Icon className="w-7 h-7 text-primary" />
                   </div>
                   <h3 className="text-xl font-bold text-foreground mb-2">
                     {service.title}
                   </h3>
-                  <p className="text-gray-600 text-sm">
-                    {service.description}
-                  </p>
+                  <p className="text-gray-600 text-sm">{service.description}</p>
                 </div>
               );
             })}
@@ -74,10 +75,12 @@ export default function Services() {
               Services Details Coming Soon
             </h2>
             <p className="text-lg text-gray-600 mb-6">
-              Detailed service descriptions, pricing, and booking information can be added here.
+              Detailed service descriptions, pricing, and booking information
+              can be added here.
             </p>
             <p className="text-gray-500 italic">
-              Ask the AI to add more details about your specific services, packages, and pricing.
+              Ask the AI to add more details about your specific services,
+              packages, and pricing.
             </p>
           </div>
         </div>

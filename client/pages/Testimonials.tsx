@@ -48,11 +48,17 @@ export default function Testimonials() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial) => (
-              <div key={testimonial.id} className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all p-8">
+              <div
+                key={testimonial.id}
+                className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all p-8"
+              >
                 {/* Rating */}
                 <div className="flex gap-1 mb-4">
                   {Array.from({ length: testimonial.rating }).map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                    <Star
+                      key={i}
+                      className="w-5 h-5 text-yellow-400 fill-yellow-400"
+                    />
                   ))}
                 </div>
 
@@ -68,8 +74,12 @@ export default function Testimonials() {
                     style={{ background: testimonial.image }}
                   ></div>
                   <div>
-                    <p className="font-bold text-foreground">{testimonial.name}</p>
-                    <p className="text-sm text-gray-500">{testimonial.location}</p>
+                    <p className="font-bold text-foreground">
+                      {testimonial.name}
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      {testimonial.location}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -89,7 +99,8 @@ export default function Testimonials() {
               Share Your Experience
             </h2>
             <p className="text-lg text-gray-600 mb-6">
-              Your testimonial could inspire other travelers to explore with StoriesByFoot.
+              Your testimonial could inspire other travelers to explore with
+              StoriesByFoot.
             </p>
             <button className="px-8 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors">
               Write a Review

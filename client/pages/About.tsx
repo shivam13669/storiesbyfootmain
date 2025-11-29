@@ -27,10 +27,12 @@ export default function About() {
               About Page
             </h2>
             <p className="text-lg text-gray-600 mb-6">
-              This page is ready to showcase your company story, mission, and values.
+              This page is ready to showcase your company story, mission, and
+              values.
             </p>
             <p className="text-gray-500 italic">
-              Prompt the AI to fill in this page with your company information, team members, history, and values.
+              Prompt the AI to fill in this page with your company information,
+              team members, history, and values.
             </p>
           </div>
 
@@ -40,22 +42,34 @@ export default function About() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
                 <Lightbulb className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">Innovation</h3>
-              <p className="text-gray-600">Placeholder for your company's innovation values</p>
+              <h3 className="text-xl font-bold text-foreground mb-2">
+                Innovation
+              </h3>
+              <p className="text-gray-600">
+                Placeholder for your company's innovation values
+              </p>
             </div>
             <div className="text-center">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
                 <Award className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">Excellence</h3>
-              <p className="text-gray-600">Placeholder for your company's excellence values</p>
+              <h3 className="text-xl font-bold text-foreground mb-2">
+                Excellence
+              </h3>
+              <p className="text-gray-600">
+                Placeholder for your company's excellence values
+              </p>
             </div>
             <div className="text-center">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
                 <Users className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">Community</h3>
-              <p className="text-gray-600">Placeholder for your company's community values</p>
+              <h3 className="text-xl font-bold text-foreground mb-2">
+                Community
+              </h3>
+              <p className="text-gray-600">
+                Placeholder for your company's community values
+              </p>
             </div>
           </div>
         </div>

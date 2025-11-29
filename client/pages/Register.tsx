@@ -27,7 +27,13 @@ export default function Register() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.firstName || !formData.lastName || !formData.email || !formData.password || !formData.confirmPassword) {
+    if (
+      !formData.firstName ||
+      !formData.lastName ||
+      !formData.email ||
+      !formData.password ||
+      !formData.confirmPassword
+    ) {
       setError("Please fill in all fields");
       return;
     }
@@ -69,7 +75,9 @@ export default function Register() {
               <h1 className="text-3xl font-display font-bold text-foreground">
                 Create Account
               </h1>
-              <p className="text-gray-600 mt-2">Join us for amazing travel experiences</p>
+              <p className="text-gray-600 mt-2">
+                Join us for amazing travel experiences
+              </p>
             </div>
 
             {/* Error Message */}
@@ -172,19 +180,33 @@ export default function Register() {
                 {formData.password && (
                   <div className="mt-3 space-y-2">
                     <div className="flex items-center gap-2">
-                      <div className={`w-1 h-1 rounded-full ${passwordStrength.hasLength ? "bg-green-500" : "bg-gray-300"}`}></div>
-                      <span className="text-xs text-gray-600">At least 8 characters</span>
+                      <div
+                        className={`w-1 h-1 rounded-full ${passwordStrength.hasLength ? "bg-green-500" : "bg-gray-300"}`}
+                      ></div>
+                      <span className="text-xs text-gray-600">
+                        At least 8 characters
+                      </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className={`w-1 h-1 rounded-full ${passwordStrength.hasUpperCase ? "bg-green-500" : "bg-gray-300"}`}></div>
-                      <span className="text-xs text-gray-600">One uppercase letter</span>
+                      <div
+                        className={`w-1 h-1 rounded-full ${passwordStrength.hasUpperCase ? "bg-green-500" : "bg-gray-300"}`}
+                      ></div>
+                      <span className="text-xs text-gray-600">
+                        One uppercase letter
+                      </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className={`w-1 h-1 rounded-full ${passwordStrength.hasLowerCase ? "bg-green-500" : "bg-gray-300"}`}></div>
-                      <span className="text-xs text-gray-600">One lowercase letter</span>
+                      <div
+                        className={`w-1 h-1 rounded-full ${passwordStrength.hasLowerCase ? "bg-green-500" : "bg-gray-300"}`}
+                      ></div>
+                      <span className="text-xs text-gray-600">
+                        One lowercase letter
+                      </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className={`w-1 h-1 rounded-full ${passwordStrength.hasNumber ? "bg-green-500" : "bg-gray-300"}`}></div>
+                      <div
+                        className={`w-1 h-1 rounded-full ${passwordStrength.hasNumber ? "bg-green-500" : "bg-gray-300"}`}
+                      ></div>
                       <span className="text-xs text-gray-600">One number</span>
                     </div>
                   </div>
@@ -202,7 +224,10 @@ export default function Register() {
                     type={showConfirmPassword ? "text" : "password"}
                     value={formData.confirmPassword}
                     onChange={(e) =>
-                      setFormData({ ...formData, confirmPassword: e.target.value })
+                      setFormData({
+                        ...formData,
+                        confirmPassword: e.target.value,
+                      })
                     }
                     placeholder="••••••••"
                     className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
@@ -220,9 +245,13 @@ export default function Register() {
                   </button>
                 </div>
                 {formData.password && formData.confirmPassword && (
-                  <p className={`mt-2 text-xs flex items-center gap-1 ${formData.password === formData.confirmPassword ? "text-green-600" : "text-red-600"}`}>
+                  <p
+                    className={`mt-2 text-xs flex items-center gap-1 ${formData.password === formData.confirmPassword ? "text-green-600" : "text-red-600"}`}
+                  >
                     <CheckCircle className="w-4 h-4" />
-                    {formData.password === formData.confirmPassword ? "Passwords match" : "Passwords don't match"}
+                    {formData.password === formData.confirmPassword
+                      ? "Passwords match"
+                      : "Passwords don't match"}
                   </p>
                 )}
               </div>
@@ -237,11 +266,17 @@ export default function Register() {
                 />
                 <span className="text-xs text-gray-600">
                   I agree to the{" "}
-                  <a href="#" className="text-primary hover:text-orange-600 transition-colors font-semibold">
+                  <a
+                    href="#"
+                    className="text-primary hover:text-orange-600 transition-colors font-semibold"
+                  >
                     Terms of Service
                   </a>{" "}
                   and{" "}
-                  <a href="#" className="text-primary hover:text-orange-600 transition-colors font-semibold">
+                  <a
+                    href="#"
+                    className="text-primary hover:text-orange-600 transition-colors font-semibold"
+                  >
                     Privacy Policy
                   </a>
                 </span>
@@ -262,7 +297,9 @@ export default function Register() {
                 <div className="w-full border-t border-gray-300"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">Or sign up with</span>
+                <span className="px-2 bg-white text-gray-500">
+                  Or sign up with
+                </span>
               </div>
             </div>
 
@@ -279,7 +316,10 @@ export default function Register() {
             {/* Sign In Link */}
             <p className="text-center mt-6 text-gray-600 text-sm">
               Already have an account?{" "}
-              <Link to="/login" className="text-primary font-semibold hover:text-orange-600 transition-colors">
+              <Link
+                to="/login"
+                className="text-primary font-semibold hover:text-orange-600 transition-colors"
+              >
                 Sign in
               </Link>
             </p>

@@ -118,12 +118,21 @@ export default function Destinations() {
     },
   ];
 
-  const categories = ["All", "Beach", "Mountain", "City", "Luxury", "Adventure"];
+  const categories = [
+    "All",
+    "Beach",
+    "Mountain",
+    "City",
+    "Luxury",
+    "Adventure",
+  ];
 
   const filteredDestinations = destinations.filter((dest) => {
-    const matchesSearch = dest.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    const matchesSearch =
+      dest.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       dest.location.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory = selectedCategory === "All" || dest.category === selectedCategory;
+    const matchesCategory =
+      selectedCategory === "All" || dest.category === selectedCategory;
     const matchesPrice =
       priceRange === "All" ||
       (priceRange === "Low" && dest.price < 1000) ||
@@ -188,7 +197,10 @@ export default function Destinations() {
                   </label>
                   <div className="space-y-2">
                     {categories.map((cat) => (
-                      <label key={cat} className="flex items-center gap-2 cursor-pointer">
+                      <label
+                        key={cat}
+                        className="flex items-center gap-2 cursor-pointer"
+                      >
                         <input
                           type="radio"
                           name="category"
@@ -243,7 +255,11 @@ export default function Destinations() {
             <div className="lg:col-span-3">
               <div className="mb-6 flex justify-between items-center">
                 <p className="text-gray-600">
-                  Showing <span className="font-semibold">{filteredDestinations.length}</span> destinations
+                  Showing{" "}
+                  <span className="font-semibold">
+                    {filteredDestinations.length}
+                  </span>{" "}
+                  destinations
                 </p>
               </div>
 

@@ -64,11 +64,7 @@ export default function Header() {
             className="lg:hidden p-2"
             aria-label="Toggle menu"
           >
-            {isOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 

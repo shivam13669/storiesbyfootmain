@@ -1,7 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
-import { Search, MapPin, Calendar, Users, Star, ArrowRight } from "lucide-react";
+import {
+  Search,
+  MapPin,
+  Calendar,
+  Users,
+  Star,
+  ArrowRight,
+} from "lucide-react";
 
 export default function Index() {
   const [searchParams, setSearchParams] = useState({
@@ -112,13 +119,17 @@ export default function Index() {
               Explore Your <span className="text-primary">Next Adventure</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-              Discover extraordinary destinations, create unforgettable memories with StoriesByFoot
+              Discover extraordinary destinations, create unforgettable memories
+              with StoriesByFoot
             </p>
           </div>
 
           {/* Search Form */}
           <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 max-w-4xl mx-auto w-full">
-            <form onSubmit={handleSearch} className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <form
+              onSubmit={handleSearch}
+              className="grid grid-cols-1 md:grid-cols-4 gap-4"
+            >
               {/* Destination */}
               <div className="relative">
                 <label className="block text-sm font-semibold text-foreground mb-2">
@@ -131,7 +142,10 @@ export default function Index() {
                     placeholder="Where to?"
                     value={searchParams.destination}
                     onChange={(e) =>
-                      setSearchParams({ ...searchParams, destination: e.target.value })
+                      setSearchParams({
+                        ...searchParams,
+                        destination: e.target.value,
+                      })
                     }
                     className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
                   />
@@ -149,7 +163,10 @@ export default function Index() {
                     type="date"
                     value={searchParams.checkIn}
                     onChange={(e) =>
-                      setSearchParams({ ...searchParams, checkIn: e.target.value })
+                      setSearchParams({
+                        ...searchParams,
+                        checkIn: e.target.value,
+                      })
                     }
                     className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
                   />
@@ -167,7 +184,10 @@ export default function Index() {
                     type="date"
                     value={searchParams.checkOut}
                     onChange={(e) =>
-                      setSearchParams({ ...searchParams, checkOut: e.target.value })
+                      setSearchParams({
+                        ...searchParams,
+                        checkOut: e.target.value,
+                      })
                     }
                     className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
                   />
@@ -182,7 +202,10 @@ export default function Index() {
                 <select
                   value={searchParams.travelers}
                   onChange={(e) =>
-                    setSearchParams({ ...searchParams, travelers: e.target.value })
+                    setSearchParams({
+                      ...searchParams,
+                      travelers: e.target.value,
+                    })
                   }
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
                 >
@@ -261,7 +284,9 @@ export default function Index() {
                     <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-all"></div>
                     <div className="absolute top-4 right-4 bg-white px-3 py-1 rounded-full flex items-center gap-1">
                       <Star className="w-4 h-4 text-primary fill-primary" />
-                      <span className="font-semibold text-sm">{destination.rating}</span>
+                      <span className="font-semibold text-sm">
+                        {destination.rating}
+                      </span>
                     </div>
                   </div>
 
