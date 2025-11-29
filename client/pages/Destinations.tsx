@@ -232,7 +232,7 @@ export default function Destinations() {
                   <select
                     value={priceRange}
                     onChange={(e) => setPriceRange(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-sm"
+                    className="w-full px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-sm bg-input text-foreground"
                   >
                     <option>All</option>
                     <option>Low (&lt; $1000)</option>
@@ -249,7 +249,7 @@ export default function Destinations() {
                   <select
                     value={rating}
                     onChange={(e) => setRating(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-sm"
+                    className="w-full px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-sm bg-input text-foreground"
                   >
                     <option>All</option>
                     <option>4.5+</option>
