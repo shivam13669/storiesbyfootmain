@@ -1,10 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { CurrencyPicker } from "./CurrencyPicker";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [currency, setCurrency] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("selectedCurrency") || "INR";
+    }
+    return "INR";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("selectedCurrency", currency);
+  }, [currency]);
 
   const navItems = [
     { label: "Home", path: "/" },
@@ -42,19 +53,18 @@ export default function Header() {
             ))}
           </div>
 
-          {/* Login Button - Desktop */}
-          <div className="hidden lg:flex gap-4">
+          {/* Currency Picker & Login - Desktop */}
+          <div className="hidden lg:flex gap-4 items-center">
+            <CurrencyPicker
+              value={currency}
+              onChange={setCurrency}
+              variant="light"
+            />
             <Link
               to="/login"
               className="px-6 py-2 border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-lg font-medium transition-colors"
             >
               Login
-            </Link>
-            <Link
-              to="/register"
-              className="px-6 py-2 bg-primary text-white rounded-lg font-medium hover:bg-orange-600 transition-colors"
-            >
-              Sign Up
             </Link>
           </div>
 
@@ -83,19 +93,20 @@ export default function Header() {
                 </Link>
               ))}
               <div className="flex gap-2 pt-4 border-t border-gray-200">
+                <div className="flex-1">
+                  <CurrencyPicker
+                    value={currency}
+                    onChange={setCurrency}
+                    variant="light"
+                    className="w-full justify-center"
+                  />
+                </div>
                 <Link
                   to="/login"
                   className="flex-1 px-4 py-2 border-2 border-primary text-primary rounded-lg font-medium text-center"
                   onClick={() => setIsOpen(false)}
                 >
                   Login
-                </Link>
-                <Link
-                  to="/register"
-                  className="flex-1 px-4 py-2 bg-primary text-white rounded-lg font-medium text-center"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Sign Up
                 </Link>
               </div>
             </div>
