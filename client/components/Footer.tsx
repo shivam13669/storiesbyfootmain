@@ -21,7 +21,7 @@ export default function Footer() {
                 alt="StoriesByFoot"
                 className="w-10 h-10 object-contain"
               />
-              <span className="font-display text-lg font-bold">
+              <span className="font-display text-xl font-bold">
                 StoriesBy<span className="text-primary">Foot</span>
               </span>
             </div>
