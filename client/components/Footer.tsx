@@ -23,7 +23,7 @@ export default function Footer() {
                 StoriesByFoot
               </span>
             </div>
-            <p className="text-gray-300 text-sm">
+            <p className="text-muted-foreground text-sm">
               Discover extraordinary destinations and create unforgettable
               memories.
             </p>
@@ -36,7 +36,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/"
-                  className="text-gray-300 hover:text-primary transition-colors text-sm"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
                 >
                   Home
                 </Link>
@@ -44,7 +44,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/destinations"
-                  className="text-gray-300 hover:text-primary transition-colors text-sm"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
                 >
                   Destinations
                 </Link>
@@ -52,7 +52,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/services"
-                  className="text-gray-300 hover:text-primary transition-colors text-sm"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
                 >
                   Services
                 </Link>
@@ -60,7 +60,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/about"
-                  className="text-gray-300 hover:text-primary transition-colors text-sm"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
                 >
                   About Us
                 </Link>
@@ -75,7 +75,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/contact"
-                  className="text-gray-300 hover:text-primary transition-colors text-sm"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
                 >
                   Contact
                 </Link>
@@ -83,7 +83,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/testimonials"
-                  className="text-gray-300 hover:text-primary transition-colors text-sm"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
                 >
                   Testimonials
                 </Link>
@@ -91,7 +91,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-300 hover:text-primary transition-colors text-sm"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
                 >
                   Privacy Policy
                 </a>
@@ -99,7 +99,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-300 hover:text-primary transition-colors text-sm"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
                 >
                   Terms of Service
                 </a>
@@ -119,7 +119,7 @@ export default function Footer() {
                 <Phone className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                 <a
                   href="tel:+916205129118"
-                  className="text-gray-300 hover:text-primary transition-colors text-sm"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
                 >
                   +91 62051 29118
                 </a>
@@ -128,7 +128,7 @@ export default function Footer() {
                 <Mail className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                 <a
                   href="mailto:contact@storiesbyfoot.com"
-                  className="text-gray-300 hover:text-primary transition-colors text-sm"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
                 >
                   contact@storiesbyfoot.com
                 </a>
@@ -138,30 +138,30 @@ export default function Footer() {
         </div>
 
         {/* Social Media & Bottom */}
-        <div className="border-t border-gray-700 pt-8">
+        <div className="border-t border-border pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-400 text-sm">
+            <p className="text-muted-foreground text-sm">
               © 2024 StoriesByFoot. All rights reserved.
             </p>
             <div className="flex gap-6">
               <a
                 href="#"
                 aria-label="Facebook"
-                className="text-gray-300 hover:text-primary transition-colors"
+                className="text-muted-foreground hover:text-primary transition-colors"
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a
                 href="#"
                 aria-label="Instagram"
-                className="text-gray-300 hover:text-primary transition-colors"
+                className="text-muted-foreground hover:text-primary transition-colors"
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a
                 href="#"
                 aria-label="Twitter"
-                className="text-gray-300 hover:text-primary transition-colors"
+                className="text-muted-foreground hover:text-primary transition-colors"
               >
                 <Twitter className="w-5 h-5" />
               </a>
