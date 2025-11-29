@@ -1,9 +1,21 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "./ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
 import { Input } from "./ui/input";
 import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
-import { CURRENCIES, COMMON_CODES, FLAG_BY_CURRENCY, getCurrencyByCode, type Currency } from "@/lib/currency";
+import {
+  CURRENCIES,
+  COMMON_CODES,
+  FLAG_BY_CURRENCY,
+  getCurrencyByCode,
+  type Currency,
+} from "@/lib/currency";
 
 export function CurrencyPicker({
   value,
@@ -20,19 +32,26 @@ export function CurrencyPicker({
   const [query, setQuery] = useState("");
 
   const display = getCurrencyByCode(value);
-  const flagCc = (FLAG_BY_CURRENCY[display.code] || display.code.slice(0, 2)).toLowerCase();
+  const flagCc = (
+    FLAG_BY_CURRENCY[display.code] || display.code.slice(0, 2)
+  ).toLowerCase();
   const flagSrc = `https://flagcdn.com/24x18/${flagCc}.png`;
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return CURRENCIES;
     return CURRENCIES.filter(
-      (c) => c.code.toLowerCase().includes(q) || c.name.toLowerCase().includes(q)
+      (c) =>
+        c.code.toLowerCase().includes(q) || c.name.toLowerCase().includes(q),
     );
   }, [query]);
 
-  const common = filtered.filter((c) => (COMMON_CODES as readonly string[]).includes(c.code));
-  const others = filtered.filter((c) => !(COMMON_CODES as readonly string[]).includes(c.code));
+  const common = filtered.filter((c) =>
+    (COMMON_CODES as readonly string[]).includes(c.code),
+  );
+  const others = filtered.filter(
+    (c) => !(COMMON_CODES as readonly string[]).includes(c.code),
+  );
 
   useEffect(() => {
     // Close on selection stored outside
@@ -48,15 +67,25 @@ export function CurrencyPicker({
             variant === "dark"
               ? "border border-white/20 bg-white/10 text-white hover:bg-white/15"
               : "border-2 border-primary text-primary hover:bg-primary hover:text-white",
-            className
+            className,
           )}
           aria-label="Choose currency"
           aria-haspopup="dialog"
           aria-expanded={open}
         >
-          <img src={flagSrc} alt={display.code} width={18} height={14} className="rounded-sm" />
-          <span>{display.code} {display.symbol}</span>
-          <ChevronDown className={cn("h-4 w-4 transition-transform", open && "rotate-180")} />
+          <img
+            src={flagSrc}
+            alt={display.code}
+            width={18}
+            height={14}
+            className="rounded-sm"
+          />
+          <span>
+            {display.code} {display.symbol}
+          </span>
+          <ChevronDown
+            className={cn("h-4 w-4 transition-transform", open && "rotate-180")}
+          />
         </button>
       </DialogTrigger>
       <DialogContent className="w-full max-w-3xl p-0">
@@ -106,17 +135,24 @@ export function CurrencyPicker({
   );
 }
 
-function Section({ title, children }: React.PropsWithChildren<{ title: string }>) {
+function Section({
+  title,
+  children,
+}: React.PropsWithChildren<{ title: string }>) {
   return (
     <div className="mb-8">
-      <h4 className="mb-3 text-sm font-semibold text-muted-foreground">{title}</h4>
+      <h4 className="mb-3 text-sm font-semibold text-muted-foreground">
+        {title}
+      </h4>
       {children}
     </div>
   );
 }
 
 function Grid({ children }: React.PropsWithChildren) {
-  return <div className="grid grid-cols-2 gap-3 md:grid-cols-3">{children}</div>;
+  return (
+    <div className="grid grid-cols-2 gap-3 md:grid-cols-3">{children}</div>
+  );
 }
 
 function CurrencyItem({ c, onSelect }: { c: Currency; onSelect: () => void }) {
@@ -125,9 +161,17 @@ function CurrencyItem({ c, onSelect }: { c: Currency; onSelect: () => void }) {
       onClick={onSelect}
       className="flex w-full items-start gap-2 rounded-lg border border-border bg-card p-3 text-left hover:border-primary/50 hover:bg-primary/5"
     >
-      <img src={`https://flagcdn.com/24x18/${(FLAG_BY_CURRENCY[c.code] || c.code.slice(0, 2)).toLowerCase()}.png`} alt={c.code} width={18} height={14} className="rounded-sm" />
+      <img
+        src={`https://flagcdn.com/24x18/${(FLAG_BY_CURRENCY[c.code] || c.code.slice(0, 2)).toLowerCase()}.png`}
+        alt={c.code}
+        width={18}
+        height={14}
+        className="rounded-sm"
+      />
       <span className="flex flex-col">
-        <span className="text-sm font-medium">{c.code} - {c.symbol}</span>
+        <span className="text-sm font-medium">
+          {c.code} - {c.symbol}
+        </span>
         <span className="text-xs text-muted-foreground">{c.name}</span>
       </span>
     </button>
