@@ -20,7 +20,7 @@ export default function Footer() {
                 <span className="text-white font-bold">SF</span>
               </div>
               <span className="font-display text-lg font-bold">
-                StoriesBy<span className="text-primary">Foot</span>
+                StoriesBy<span className="text-primary font-bold">Foot</span>
               </span>
             </div>
             <p className="text-gray-300 text-sm">
