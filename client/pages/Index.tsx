@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 
 export default function Index() {
+  const { currency, convertPrice, getSymbol } = useCurrency();
   const [searchParams, setSearchParams] = useState({
     destination: "",
     checkIn: "",
@@ -34,7 +35,7 @@ export default function Index() {
       description:
         "Conquer Khardung La, trace the Shyok River, and camp under galaxy-bright skies",
       rating: 4.9,
-      price: "₹38,500",
+      price: 463,
       duration: "6 days",
     },
     {
@@ -45,7 +46,7 @@ export default function Index() {
       description:
         "A spirited bike tour covering Magnetic Hill, Sangam, and the dunes of Hunder",
       rating: 4.8,
-      price: "₹34,200",
+      price: 411,
       duration: "7 days",
     },
     {
@@ -56,7 +57,7 @@ export default function Index() {
       description:
         "Comfort-first itinerary with boutique stays, private SUV transfers, and monastery visits",
       rating: 4.7,
-      price: "₹29,900",
+      price: 360,
       duration: "6 days",
     },
     {
@@ -67,7 +68,7 @@ export default function Index() {
       description:
         "Explore the highest monastery and scenic mountain landscapes",
       rating: 4.8,
-      price: "₹26,500",
+      price: 319,
       duration: "5 days",
     },
     {
@@ -78,7 +79,7 @@ export default function Index() {
       description:
         "Experience the kingdom of happiness with pristine nature and ancient traditions",
       rating: 4.9,
-      price: "₹42,000",
+      price: 505,
       duration: "7 days",
     },
     {
@@ -89,7 +90,7 @@ export default function Index() {
       description:
         "Trek through living root bridges and misty hills in the land of clouds",
       rating: 4.7,
-      price: "₹24,900",
+      price: 300,
       duration: "5 days",
     },
   ];
