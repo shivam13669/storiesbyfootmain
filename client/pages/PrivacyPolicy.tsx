@@ -22,10 +22,20 @@ export default function PrivacyPolicy() {
             {/* Welcome Section */}
             <div className="mb-8">
               <p className="text-gray-700 mb-4">
-                Welcome to StoriesByFoot ("we," "our," or "us"). This Privacy Policy explains how we collect, use, store, and protect your personal information when you visit or use our website https://storiesbyfoot.com (the "Website") and any related features, services, or content (collectively, the "Services"). By using our Website, you consent to the practices described in this Privacy Policy. If you do not agree with any part of this Policy, please discontinue using our Services.
+                Welcome to StoriesByFoot ("we," "our," or "us"). This Privacy
+                Policy explains how we collect, use, store, and protect your
+                personal information when you visit or use our website
+                https://storiesbyfoot.com (the "Website") and any related
+                features, services, or content (collectively, the "Services").
+                By using our Website, you consent to the practices described in
+                this Privacy Policy. If you do not agree with any part of this
+                Policy, please discontinue using our Services.
               </p>
               <p className="text-gray-700">
-                StoriesByFoot, together with its trusted service partners, manages and safeguards personal information collected through this Website in accordance with this Privacy Policy and the Terms and Conditions.
+                StoriesByFoot, together with its trusted service partners,
+                manages and safeguards personal information collected through
+                this Website in accordance with this Privacy Policy and the
+                Terms and Conditions.
               </p>
             </div>
 
@@ -35,7 +45,8 @@ export default function PrivacyPolicy() {
                 1. Information We Collect
               </h2>
               <p className="text-gray-700 mb-4">
-                We collect personal and non-personal information from you in several ways, including:
+                We collect personal and non-personal information from you in
+                several ways, including:
               </p>
 
               <div className="mb-8">
@@ -49,14 +60,20 @@ export default function PrivacyPolicy() {
                   <li>Contact us via email or chat</li>
                   <li>Submit reviews, stories, or images</li>
                 </ul>
-                <p className="text-gray-700 mb-2">The information you provide may include:</p>
+                <p className="text-gray-700 mb-2">
+                  The information you provide may include:
+                </p>
                 <ul className="list-disc list-inside text-gray-700 space-y-2">
                   <li>Full name</li>
                   <li>Email address</li>
                   <li>Contact number</li>
-                  <li>Payment or billing details (processed via secure gateways)</li>
+                  <li>
+                    Payment or billing details (processed via secure gateways)
+                  </li>
                   <li>Travel preferences and booking details</li>
-                  <li>Any content you share (such as reviews, photos, or stories)</li>
+                  <li>
+                    Any content you share (such as reviews, photos, or stories)
+                  </li>
                 </ul>
               </div>
 
@@ -64,7 +81,9 @@ export default function PrivacyPolicy() {
                 <h3 className="text-xl font-semibold text-gray-800 mb-3">
                   1.2. Information Collected Automatically
                 </h3>
-                <p className="text-gray-700 mb-4">When you visit our Website, we may automatically collect:</p>
+                <p className="text-gray-700 mb-4">
+                  When you visit our Website, we may automatically collect:
+                </p>
                 <ul className="list-disc list-inside text-gray-700 space-y-2 mb-4">
                   <li>IP address and browser type</li>
                   <li>Device information (mobile/desktop, OS)</li>
@@ -72,7 +91,8 @@ export default function PrivacyPolicy() {
                   <li>Cookie data and analytics identifiers</li>
                 </ul>
                 <p className="text-gray-700">
-                  We use this data for website optimization, analytics, and personalized user experiences.
+                  We use this data for website optimization, analytics, and
+                  personalized user experiences.
                 </p>
               </div>
             </div>
@@ -83,18 +103,31 @@ export default function PrivacyPolicy() {
                 2. Use of Collected Information
               </h2>
               <p className="text-gray-700 mb-4">
-                We use your information for legitimate business purposes, including:
+                We use your information for legitimate business purposes,
+                including:
               </p>
               <ul className="list-disc list-inside text-gray-700 space-y-2 mb-4">
                 <li>To process bookings, payments, and confirmations</li>
-                <li>To communicate with you about inquiries, trips, or offers</li>
-                <li>To personalize your website experience and show relevant destinations</li>
-                <li>To send newsletters, travel updates, or promotional materials (you may opt out anytime)</li>
+                <li>
+                  To communicate with you about inquiries, trips, or offers
+                </li>
+                <li>
+                  To personalize your website experience and show relevant
+                  destinations
+                </li>
+                <li>
+                  To send newsletters, travel updates, or promotional materials
+                  (you may opt out anytime)
+                </li>
                 <li>To improve our Website, security, and services</li>
                 <li>To comply with legal or regulatory obligations</li>
               </ul>
               <p className="text-gray-700">
-                We do not sell or rent your personal data to any third parties. We process personal information based on your consent, contractual necessity (to provide booked services), or legitimate business interests such as service improvement and fraud prevention.
+                We do not sell or rent your personal data to any third parties.
+                We process personal information based on your consent,
+                contractual necessity (to provide booked services), or
+                legitimate business interests such as service improvement and
+                fraud prevention.
               </p>
             </div>
 
@@ -107,12 +140,21 @@ export default function PrivacyPolicy() {
                 Our Website uses cookies and similar tracking tools to:
               </p>
               <ul className="list-disc list-inside text-gray-700 space-y-2 mb-4">
-                <li>Enable core functionality (e.g., login sessions, preferences)</li>
-                <li>Analyze visitor interactions using tools like Google Analytics</li>
+                <li>
+                  Enable core functionality (e.g., login sessions, preferences)
+                </li>
+                <li>
+                  Analyze visitor interactions using tools like Google Analytics
+                </li>
                 <li>Provide personalized recommendations and advertisements</li>
               </ul>
               <p className="text-gray-700">
-                You can manage or disable cookies in your browser settings, though some features of the Website may not function properly if cookies are disabled. By using this Website, you acknowledge that you have read and agreed to the complete Cookie Policy and consent to the use of cookies and related technologies as described therein.
+                You can manage or disable cookies in your browser settings,
+                though some features of the Website may not function properly if
+                cookies are disabled. By using this Website, you acknowledge
+                that you have read and agreed to the complete Cookie Policy and
+                consent to the use of cookies and related technologies as
+                described therein.
               </p>
             </div>
 
@@ -130,7 +172,9 @@ export default function PrivacyPolicy() {
                   4.1. With Service Providers and Partners
                 </h3>
                 <p className="text-gray-700 mb-4">
-                  To fulfill your bookings and provide travel services, we may share limited necessary information with trusted partners, such as:
+                  To fulfill your bookings and provide travel services, we may
+                  share limited necessary information with trusted partners,
+                  such as:
                 </p>
                 <ul className="list-disc list-inside text-gray-700 space-y-2 mb-4">
                   <li>Hotels, airlines, and tour operators</li>
@@ -138,7 +182,8 @@ export default function PrivacyPolicy() {
                   <li>IT and customer support providers</li>
                 </ul>
                 <p className="text-gray-700">
-                  All such partners are bound by confidentiality and data protection obligations.
+                  All such partners are bound by confidentiality and data
+                  protection obligations.
                 </p>
               </div>
 
@@ -147,7 +192,8 @@ export default function PrivacyPolicy() {
                   4.2. Legal Obligations
                 </h3>
                 <p className="text-gray-700 mb-4">
-                  We may disclose your information if required by law, court order, or government authority to:
+                  We may disclose your information if required by law, court
+                  order, or government authority to:
                 </p>
                 <ul className="list-disc list-inside text-gray-700 space-y-2">
                   <li>Comply with legal requirements</li>
@@ -161,7 +207,9 @@ export default function PrivacyPolicy() {
                   4.3. Business Transfers
                 </h3>
                 <p className="text-gray-700">
-                  If StoriesByFoot undergoes a merger, acquisition, or reorganization, your data may be transferred as part of that transaction, but your privacy rights will remain protected.
+                  If StoriesByFoot undergoes a merger, acquisition, or
+                  reorganization, your data may be transferred as part of that
+                  transaction, but your privacy rights will remain protected.
                 </p>
               </div>
             </div>
@@ -172,10 +220,16 @@ export default function PrivacyPolicy() {
                 5. Data Storage and Security
               </h2>
               <p className="text-gray-700 mb-4">
-                We employ reasonable administrative, technical, and physical safeguards to protect your information from unauthorized access, loss, misuse, or alteration. Sensitive information (like payment details) is processed through secure, PCI-DSS compliant payment gateways.
+                We employ reasonable administrative, technical, and physical
+                safeguards to protect your information from unauthorized access,
+                loss, misuse, or alteration. Sensitive information (like payment
+                details) is processed through secure, PCI-DSS compliant payment
+                gateways.
               </p>
               <p className="text-gray-700">
-                While we strive to protect your data, no online platform can guarantee absolute security. You use our Website at your own risk.
+                While we strive to protect your data, no online platform can
+                guarantee absolute security. You use our Website at your own
+                risk.
               </p>
             </div>
 
@@ -193,7 +247,8 @@ export default function PrivacyPolicy() {
                 <li>Request details on how your information is used</li>
               </ul>
               <p className="text-gray-700">
-                You can exercise these rights by emailing us at storiesbyfoot@gmail.com.
+                You can exercise these rights by emailing us at
+                storiesbyfoot@gmail.com.
               </p>
             </div>
 
@@ -221,7 +276,11 @@ export default function PrivacyPolicy() {
                 8. Third-Party Links
               </h2>
               <p className="text-gray-700">
-                Our Website may contain links to external websites (e.g., hotel partners, tourism boards). StoriesByFoot is not responsible for the privacy practices or content of such third-party sites. We encourage you to review their policies before interacting or sharing information.
+                Our Website may contain links to external websites (e.g., hotel
+                partners, tourism boards). StoriesByFoot is not responsible for
+                the privacy practices or content of such third-party sites. We
+                encourage you to review their policies before interacting or
+                sharing information.
               </p>
             </div>
 
@@ -231,10 +290,17 @@ export default function PrivacyPolicy() {
                 9. Children's Privacy
               </h2>
               <p className="text-gray-700 mb-4">
-                Our Services are primarily intended for individuals who are 18 years of age or older. If you are under 18 years of age, you may use our Services only under the supervision and consent of a parent or legal guardian.
+                Our Services are primarily intended for individuals who are 18
+                years of age or older. If you are under 18 years of age, you may
+                use our Services only under the supervision and consent of a
+                parent or legal guardian.
               </p>
               <p className="text-gray-700">
-                We do not knowingly collect or store personal information from minors. If we become aware that data from a child has been collected without appropriate consent, we will delete such information promptly and take reasonable steps to ensure compliance with our prevailing privacy standards.
+                We do not knowingly collect or store personal information from
+                minors. If we become aware that data from a child has been
+                collected without appropriate consent, we will delete such
+                information promptly and take reasonable steps to ensure
+                compliance with our prevailing privacy standards.
               </p>
             </div>
 
@@ -244,7 +310,11 @@ export default function PrivacyPolicy() {
                 10. International Users
               </h2>
               <p className="text-gray-700">
-                If you are accessing our Website from outside India, please note that your information may be transferred to and processed in India, where data protection laws may differ from your jurisdiction. By using our Website, you consent to such transfers.
+                If you are accessing our Website from outside India, please note
+                that your information may be transferred to and processed in
+                India, where data protection laws may differ from your
+                jurisdiction. By using our Website, you consent to such
+                transfers.
               </p>
             </div>
 
@@ -254,7 +324,11 @@ export default function PrivacyPolicy() {
                 11. Changes to this Privacy Policy
               </h2>
               <p className="text-gray-700">
-                StoriesByFoot reserves the right to modify or update this Privacy Policy at any time. All changes will be posted on this page with an updated "Last Updated" date. Your continued use of the Website after changes signifies acceptance of the revised Policy.
+                StoriesByFoot reserves the right to modify or update this
+                Privacy Policy at any time. All changes will be posted on this
+                page with an updated "Last Updated" date. Your continued use of
+                the Website after changes signifies acceptance of the revised
+                Policy.
               </p>
             </div>
 
@@ -265,16 +339,19 @@ export default function PrivacyPolicy() {
               </h2>
               <div className="space-y-4 text-gray-700">
                 <p>
-                  <strong>📧 Email:</strong> contact@storiesbyfoot.com, storiesbyfoot@gmail.com
+                  <strong>📧 Email:</strong> contact@storiesbyfoot.com,
+                  storiesbyfoot@gmail.com
                 </p>
                 <p>
                   <strong>🌐 Website:</strong> https://storiesbyfoot.com
                 </p>
                 <p>
-                  <strong>📍 Registered Office:</strong> 91, GK Crystal Home, KL Highway, SAS Nagar, Punjab - 140307
+                  <strong>📍 Registered Office:</strong> 91, GK Crystal Home, KL
+                  Highway, SAS Nagar, Punjab - 140307
                 </p>
                 <p>
-                  <strong>📞 Customer Support:</strong> +916205129118, +916283620764
+                  <strong>📞 Customer Support:</strong> +916205129118,
+                  +916283620764
                 </p>
               </div>
             </div>
@@ -285,7 +362,11 @@ export default function PrivacyPolicy() {
                 Disclaimer
               </h3>
               <p className="text-gray-700">
-                StoriesByFoot values your trust and takes your privacy seriously. While we adopt best practices to protect your information, no electronic storage or transmission method is completely secure. Use of our Website implies your acceptance of this inherent risk.
+                StoriesByFoot values your trust and takes your privacy
+                seriously. While we adopt best practices to protect your
+                information, no electronic storage or transmission method is
+                completely secure. Use of our Website implies your acceptance of
+                this inherent risk.
               </p>
             </div>
           </div>
