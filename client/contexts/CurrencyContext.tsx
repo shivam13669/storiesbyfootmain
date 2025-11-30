@@ -8,7 +8,7 @@ interface CurrencyContextType {
 }
 
 const CurrencyContext = createContext<CurrencyContextType | undefined>(
-  undefined
+  undefined,
 );
 
 export function CurrencyProvider({ children }: { children: React.ReactNode }) {
