@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 
 export default function Destinations() {
+  const { currency, convertPrice, getSymbol } = useCurrency();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [priceRange, setPriceRange] = useState("All");
