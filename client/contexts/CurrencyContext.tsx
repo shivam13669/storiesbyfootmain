@@ -1,15 +1,74 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useMemo, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 interface CurrencyContextType {
   currency: string;
   setCurrency: (code: string) => void;
   convertPrice: (basePrice: number, fromCurrency?: string) => number;
   getSymbol: (code: string) => string;
+  formatPrice: (basePrice: number, fromCurrency?: string) => string;
+  isLoading: boolean;
 }
 
 const CurrencyContext = createContext<CurrencyContextType | undefined>(
   undefined,
 );
+
+const CURRENCY_SYMBOLS: Record<string, string> = {
+  USD: "$",
+  INR: "₹",
+  EUR: "€",
+  GBP: "£",
+  AED: "د.إ",
+  SGD: "S$",
+  AUD: "A$",
+  CAD: "C$",
+  JPY: "¥",
+  CNY: "¥",
+  CHF: "CHF",
+  HKD: "HK$",
+  NZD: "NZ$",
+  SEK: "kr",
+  NOK: "kr",
+  DKK: "kr",
+  ZAR: "R",
+  THB: "฿",
+  MYR: "RM",
+  IDR: "Rp",
+  LKR: "Rs",
+  BHD: "د.ب",
+  QAR: "ر.ق",
+  OMR: "ر.ع.",
+  KWD: "د.ك",
+};
+
+async function fetchExchangeRates(baseCurrency: string) {
+  try {
+    const res = await fetch(
+      `https://api.exchangerate.host/latest?base=${baseCurrency}`
+    );
+    if (res.ok) {
+      const data = await res.json();
+      return data.rates as Record<string, number>;
+    }
+  } catch (error) {
+    console.error("Primary API failed, trying fallback...", error);
+  }
+
+  try {
+    const res = await fetch(
+      `https://api.frankfurter.app/latest?from=${baseCurrency}`
+    );
+    if (res.ok) {
+      const data = await res.json();
+      return data.rates as Record<string, number>;
+    }
+  } catch (error) {
+    console.error("Fallback API failed", error);
+  }
+
+  return { [baseCurrency]: 1 };
+}
 
 export function CurrencyProvider({ children }: { children: React.ReactNode }) {
   const [currency, setCurrencyState] = useState(() => {
@@ -19,77 +78,57 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
     return "USD";
   });
 
-  useEffect(() => {
-    localStorage.setItem("selectedCurrency", currency);
-  }, [currency]);
+  const { data: rates = {}, isLoading } = useQuery({
+    queryKey: ["exchangeRates", currency],
+    queryFn: () => fetchExchangeRates(currency),
+    staleTime: 1000 * 60 * 5, // 5 minutes
+    refetchInterval: 1000 * 60 * 5, // Refresh every 5 minutes
+    refetchOnWindowFocus: false,
+  });
 
-  const conversionRates: Record<string, number> = {
-    USD: 1,
-    INR: 83.12,
-    EUR: 0.92,
-    GBP: 0.79,
-    AED: 3.67,
-    SGD: 1.35,
-    AUD: 1.53,
-    CAD: 1.36,
-    JPY: 149.5,
-    CNY: 7.24,
-    CHF: 0.88,
-    HKD: 7.81,
-    NZD: 1.67,
-    SEK: 10.5,
-    NOK: 10.6,
-    DKK: 6.85,
-    ZAR: 18.9,
-    THB: 35.2,
-    MYR: 4.7,
-    IDR: 15650,
-    LKR: 325,
-    BHD: 0.376,
-    QAR: 3.64,
-    OMR: 0.385,
-    KWD: 0.307,
+  const ratesMap = useMemo(() => {
+    const map: Record<string, number> = { [currency]: 1 };
+    if (rates && typeof rates === "object") {
+      for (const [code, rate] of Object.entries(rates)) {
+        if (typeof rate === "number" && rate > 0) {
+          map[code] = rate;
+        }
+      }
+    }
+    return map;
+  }, [rates, currency]);
+
+  const convertPrice = (
+    basePrice: number,
+    fromCurrency: string = "USD"
+  ): number => {
+    if (!Number.isFinite(basePrice)) return 0;
+
+    const fromRate = ratesMap[fromCurrency] ?? 1;
+    const toRate = ratesMap[currency] ?? 1;
+
+    return (basePrice / fromRate) * toRate;
   };
 
-  const getCurrencySymbol = (code: string): string => {
-    const symbols: Record<string, string> = {
-      USD: "$",
-      INR: "₹",
-      EUR: "€",
-      GBP: "£",
-      AED: "د.إ",
-      SGD: "S$",
-      AUD: "A$",
-      CAD: "C$",
-      JPY: "¥",
-      CNY: "¥",
-      CHF: "CHF",
-      HKD: "HK$",
-      NZD: "NZ$",
-      SEK: "kr",
-      NOK: "kr",
-      DKK: "kr",
-      ZAR: "R",
-      THB: "฿",
-      MYR: "RM",
-      IDR: "Rp",
-      LKR: "Rs",
-      BHD: "د.ب",
-      QAR: "ر.ق",
-      OMR: "ر.ع.",
-      KWD: "د.ك",
-    };
-    return symbols[code] || code;
+  const formatPrice = (
+    basePrice: number,
+    fromCurrency: string = "USD"
+  ): string => {
+    const converted = convertPrice(basePrice, fromCurrency);
+    const symbol = getSymbol(currency);
+    const formatted = new Intl.NumberFormat("en-US", {
+      maximumFractionDigits: 0,
+    }).format(Math.round(converted));
+    return `${symbol} ${formatted}`;
   };
 
-  const convertPrice = (basePrice: number, fromCurrency = "USD"): number => {
-    const baseRate = conversionRates[fromCurrency] || 1;
-    const targetRate = conversionRates[currency] || 1;
-    return (basePrice / baseRate) * targetRate;
+  const getSymbol = (code: string): string => {
+    return CURRENCY_SYMBOLS[code] || code;
   };
 
   const setCurrency = (code: string) => {
     setCurrencyState(code);
+    localStorage.setItem("selectedCurrency", code);
   };
 
   return (
@@ -98,7 +137,9 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
         currency,
         setCurrency,
         convertPrice,
-        getSymbol: getCurrencySymbol,
+        getSymbol,
+        formatPrice,
+        isLoading,
       }}
     >
       {children}
