@@ -97,13 +97,15 @@ export default function Header() {
                     className="w-full justify-center"
                   />
                 </div>
-                <Link
-                  to="/login"
+                <button
+                  onClick={() => {
+                    setIsLoginModalOpen(true);
+                    setIsOpen(false);
+                  }}
                   className="flex-1 px-4 py-2 border-2 border-primary text-primary rounded-lg font-medium text-center"
-                  onClick={() => setIsOpen(false)}
                 >
                   Login
-                </Link>
+                </button>
               </div>
             </div>
           </div>
