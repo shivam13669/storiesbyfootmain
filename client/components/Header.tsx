@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CurrencyPicker } from "./CurrencyPicker";
+import { LoginModal } from "./LoginModal";
 import { useCurrency } from "@/contexts/CurrencyContext";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const { currency, setCurrency } = useCurrency();
 
   const navItems = [
