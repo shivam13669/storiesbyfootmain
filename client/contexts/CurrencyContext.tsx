@@ -42,10 +42,12 @@ const CURRENCY_SYMBOLS: Record<string, string> = {
   KWD: "د.ك",
 };
 
-async function fetchExchangeRates(baseCurrency: string): Promise<Record<string, number>> {
+async function fetchExchangeRates(
+  baseCurrency: string,
+): Promise<Record<string, number>> {
   try {
     const res = await fetch(
-      `https://api.exchangerate.host/latest?base=${baseCurrency}`
+      `https://api.exchangerate.host/latest?base=${baseCurrency}`,
     );
     if (res.ok) {
       const data = await res.json();
@@ -59,7 +61,7 @@ async function fetchExchangeRates(baseCurrency: string): Promise<Record<string, 
 
   try {
     const res = await fetch(
-      `https://api.frankfurter.app/latest?from=${baseCurrency}`
+      `https://api.frankfurter.app/latest?from=${baseCurrency}`,
     );
     if (res.ok) {
       const data = await res.json();
@@ -104,7 +106,7 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
 
   const convertPrice = (
     basePrice: number,
-    fromCurrency: string = "USD"
+    fromCurrency: string = "USD",
   ): number => {
     if (!Number.isFinite(basePrice)) return 0;
 
@@ -116,7 +118,7 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
 
   const formatPrice = (
     basePrice: number,
-    fromCurrency: string = "USD"
+    fromCurrency: string = "USD",
   ): string => {
     const converted = convertPrice(basePrice, fromCurrency);
     const symbol = getSymbol(currency);
