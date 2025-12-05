@@ -1,5 +1,17 @@
 import { useState, useRef, useEffect } from "react";
-import { Eye, EyeOff, Mail, Lock, ArrowRight, CheckCircle, User, Phone, Search, ChevronDown, X } from "lucide-react";
+import {
+  Eye,
+  EyeOff,
+  Mail,
+  Lock,
+  ArrowRight,
+  CheckCircle,
+  User,
+  Phone,
+  Search,
+  ChevronDown,
+  X,
+} from "lucide-react";
 import { parsePhoneNumberFromString } from "libphonenumber-js";
 import {
   Dialog,
@@ -10,7 +22,11 @@ import {
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@/components/ui/popover";
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -43,29 +59,33 @@ const validateEmail = (email: string) => {
   return emailRegex.test(email);
 };
 
-const COUNTRY_DIGIT_REQUIREMENTS: Record<string, { min: number; max: number }> = {
-  IN: { min: 10, max: 10 },
-  US: { min: 10, max: 10 },
-  GB: { min: 10, max: 11 },
-  CA: { min: 10, max: 10 },
-  AU: { min: 9, max: 9 },
-  DE: { min: 10, max: 11 },
-  FR: { min: 9, max: 9 },
-  IT: { min: 10, max: 10 },
-  ES: { min: 9, max: 9 },
-  JP: { min: 10, max: 11 },
-  CN: { min: 11, max: 11 },
-  SG: { min: 8, max: 8 },
-  MY: { min: 9, max: 10 },
-  TH: { min: 9, max: 10 },
-  PH: { min: 10, max: 10 },
-  ID: { min: 9, max: 12 },
-  SL: { min: 9, max: 9 },
-  NP: { min: 10, max: 10 },
-};
+const COUNTRY_DIGIT_REQUIREMENTS: Record<string, { min: number; max: number }> =
+  {
+    IN: { min: 10, max: 10 },
+    US: { min: 10, max: 10 },
+    GB: { min: 10, max: 11 },
+    CA: { min: 10, max: 10 },
+    AU: { min: 9, max: 9 },
+    DE: { min: 10, max: 11 },
+    FR: { min: 9, max: 9 },
+    IT: { min: 10, max: 10 },
+    ES: { min: 9, max: 9 },
+    JP: { min: 10, max: 11 },
+    CN: { min: 11, max: 11 },
+    SG: { min: 8, max: 8 },
+    MY: { min: 9, max: 10 },
+    TH: { min: 9, max: 10 },
+    PH: { min: 10, max: 10 },
+    ID: { min: 9, max: 12 },
+    SL: { min: 9, max: 9 },
+    NP: { min: 10, max: 10 },
+  };
 
-const validateInternationalMobile = (mobile: string, countryCode: string): boolean => {
-  const digitCount = mobile.replace(/\D/g, '').length;
+const validateInternationalMobile = (
+  mobile: string,
+  countryCode: string,
+): boolean => {
+  const digitCount = mobile.replace(/\D/g, "").length;
   const requirements = COUNTRY_DIGIT_REQUIREMENTS[countryCode];
 
   if (!requirements) {
@@ -93,7 +113,7 @@ const validatePassword = (password: string) => {
     special: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password),
   };
 
-  const isValid = Object.values(requirements).every(req => req);
+  const isValid = Object.values(requirements).every((req) => req);
   return { isValid, requirements };
 };
 
@@ -112,7 +132,7 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
   const [countrySearch, setCountrySearch] = useState("");
   const [openCountryPopover, setOpenCountryPopover] = useState(false);
   const [agreeTerms, setAgreeTerms] = useState(false);
-  const [activeTab, setActiveTab] = useState<'login' | 'signup'>('login');
+  const [activeTab, setActiveTab] = useState<"login" | "signup">("login");
   const [isPasswordFieldFocused, setIsPasswordFieldFocused] = useState(false);
   const [emailError, setEmailError] = useState("");
   const [signupEmailError, setSignupEmailError] = useState("");
@@ -121,20 +141,24 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
   const [forgotPasswordEmail, setForgotPasswordEmail] = useState("");
   const [forgotPasswordEmailError, setForgotPasswordEmailError] = useState("");
 
-  const filteredCountries = COUNTRIES.filter(country =>
-    country.name.toLowerCase().includes(countrySearch.toLowerCase()) ||
-    country.dial.includes(countrySearch) ||
-    country.code.toLowerCase().includes(countrySearch.toLowerCase())
+  const filteredCountries = COUNTRIES.filter(
+    (country) =>
+      country.name.toLowerCase().includes(countrySearch.toLowerCase()) ||
+      country.dial.includes(countrySearch) ||
+      country.code.toLowerCase().includes(countrySearch.toLowerCase()),
   );
 
   const passwordValidation = validatePassword(signupPassword);
-  const passwordsMatch = signupPassword && confirmPassword && signupPassword === confirmPassword;
+  const passwordsMatch =
+    signupPassword && confirmPassword && signupPassword === confirmPassword;
   const isPasswordValid = passwordValidation.isValid && passwordsMatch;
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateEmail(email)) {
-      setEmailError("Please enter a valid email address (e.g., you@example.com)");
+      setEmailError(
+        "Please enter a valid email address (e.g., you@example.com)",
+      );
       return;
     }
     console.log("Login:", { email, password });
@@ -143,11 +167,15 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
   const handleSignup = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateEmail(signupEmail)) {
-      setSignupEmailError("Please enter a valid email address (e.g., you@example.com)");
+      setSignupEmailError(
+        "Please enter a valid email address (e.g., you@example.com)",
+      );
       return;
     }
     if (!validateInternationalMobile(mobileNumber, selectedCountry.code)) {
-      setMobileNumberError("Please enter a valid mobile number for the selected country");
+      setMobileNumberError(
+        "Please enter a valid mobile number for the selected country",
+      );
       alert("Please enter a valid mobile number for the selected country");
       return;
     }
@@ -171,13 +199,15 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
   const handleForgotPassword = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateEmail(forgotPasswordEmail)) {
-      setForgotPasswordEmailError("Please enter a valid email address (e.g., you@example.com)");
+      setForgotPasswordEmailError(
+        "Please enter a valid email address (e.g., you@example.com)",
+      );
       return;
     }
     console.log("Reset password for:", forgotPasswordEmail);
   };
 
-  const handleCountrySelect = (country: typeof COUNTRIES[0]) => {
+  const handleCountrySelect = (country: (typeof COUNTRIES)[0]) => {
     setSelectedCountry(country);
     setOpenCountryPopover(false);
     setCountrySearch("");
@@ -191,7 +221,10 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-5xl bg-white border-0 p-0 overflow-hidden shadow-2xl max-h-[85vh] rounded-lg left-1/2 top-[4rem] translate-x-[-50%] translate-y-0" style={{width: '85vw', maxWidth: '1000px'}}>
+      <DialogContent
+        className="max-w-5xl bg-white border-0 p-0 overflow-hidden shadow-2xl max-h-[85vh] rounded-lg left-1/2 top-[4rem] translate-x-[-50%] translate-y-0"
+        style={{ width: "85vw", maxWidth: "1000px" }}
+      >
         <DialogTitle className="sr-only">Login or Sign Up</DialogTitle>
         <div className="flex h-full min-h-[600px]">
           {/* Left Side - Premium Hero Image */}
@@ -212,7 +245,7 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                   Discover Your Next Adventure
                 </h3>
               </div>
-              
+
               <div className="space-y-3 text-white/90 text-sm">
                 <div className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5 text-orange-400" />
@@ -233,7 +266,11 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
           {/* Right Side - Premium Form */}
           <div className="w-full md:w-[45%] flex flex-col bg-white overflow-y-auto">
             {!showForgotPassword ? (
-              <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as 'login' | 'signup')} className="w-full flex flex-col h-full">
+              <Tabs
+                value={activeTab}
+                onValueChange={(v) => setActiveTab(v as "login" | "signup")}
+                className="w-full flex flex-col h-full"
+              >
                 {/* Premium Tab Headers */}
                 <div className="sticky top-0 z-10 bg-white border-b border-gray-100">
                   <TabsList className="w-full rounded-none bg-white p-0 h-auto flex justify-start gap-0">
@@ -253,7 +290,10 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                 </div>
 
                 {/* Login Tab */}
-                <TabsContent value="login" className="mt-0 flex-1 overflow-y-auto">
+                <TabsContent
+                  value="login"
+                  className="mt-0 flex-1 overflow-y-auto"
+                >
                   <div className="p-7 space-y-6">
                     <div>
                       <h2 className="text-2xl font-bold text-gray-900 mb-1">
@@ -281,13 +321,17 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                               setEmailError("");
                             }}
                             className={`w-full pl-11 pr-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500/20 bg-gray-50/50 transition-all ${
-                              emailError ? 'border-red-400 focus:border-red-500 focus:ring-red-500/20' : 'border-gray-200 focus:border-orange-500'
+                              emailError
+                                ? "border-red-400 focus:border-red-500 focus:ring-red-500/20"
+                                : "border-gray-200 focus:border-orange-500"
                             }`}
                             required
                           />
                         </div>
                         {emailError && (
-                          <p className="text-xs text-red-500 font-medium">{emailError}</p>
+                          <p className="text-xs text-red-500 font-medium">
+                            {emailError}
+                          </p>
                         )}
                       </div>
 
@@ -362,7 +406,10 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                     {/* Google Sign In */}
                     <div className="grid grid-cols-1 gap-3">
                       <button className="border-2 border-gray-200 text-gray-700 font-semibold py-2.5 px-4 rounded-lg hover:border-orange-200 hover:bg-orange-50/30 transition-all duration-200 flex items-center justify-center gap-2 group">
-                        <svg className="w-5 h-5 group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+                        <svg
+                          className="w-5 h-5 group-hover:scale-110 transition-transform"
+                          viewBox="0 0 24 24"
+                        >
                           <path
                             fill="#4285F4"
                             d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -392,7 +439,7 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                           type="button"
                           onClick={(e) => {
                             e.preventDefault();
-                            setActiveTab('signup');
+                            setActiveTab("signup");
                           }}
                           className="text-orange-600 hover:text-orange-700 font-semibold transition-colors"
                         >
@@ -408,12 +455,20 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                       </p>
                       <div className="grid grid-cols-2 gap-3">
                         <div className="bg-gradient-to-br from-green-50 to-green-50/50 p-3 rounded-lg border border-green-100">
-                          <div className="text-lg font-bold text-green-600">4.8</div>
-                          <p className="text-xs text-gray-600 mt-1">2.5K+ Reviews</p>
+                          <div className="text-lg font-bold text-green-600">
+                            4.8
+                          </div>
+                          <p className="text-xs text-gray-600 mt-1">
+                            2.5K+ Reviews
+                          </p>
                         </div>
                         <div className="bg-gradient-to-br from-blue-50 to-blue-50/50 p-3 rounded-lg border border-blue-100">
-                          <div className="text-lg font-bold text-blue-600">4.6</div>
-                          <p className="text-xs text-gray-600 mt-1">15K+ Bookings</p>
+                          <div className="text-lg font-bold text-blue-600">
+                            4.6
+                          </div>
+                          <p className="text-xs text-gray-600 mt-1">
+                            15K+ Bookings
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -421,11 +476,17 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                     {/* Terms Text */}
                     <p className="text-xs text-gray-500 text-center mt-4">
                       By continuing, you agree to StoriesByFoot's{" "}
-                      <a href="/terms-and-condition" className="text-orange-600 hover:underline">
+                      <a
+                        href="/terms-and-condition"
+                        className="text-orange-600 hover:underline"
+                      >
                         Terms & Conditions
-                      </a>
-                      {" "}and{" "}
-                      <a href="/privacy-policy" className="text-orange-600 hover:underline">
+                      </a>{" "}
+                      and{" "}
+                      <a
+                        href="/privacy-policy"
+                        className="text-orange-600 hover:underline"
+                      >
                         Privacy Policy
                       </a>
                     </p>
@@ -433,14 +494,18 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                 </TabsContent>
 
                 {/* Sign Up Tab */}
-                <TabsContent value="signup" className="mt-0 flex-1 overflow-y-auto">
+                <TabsContent
+                  value="signup"
+                  className="mt-0 flex-1 overflow-y-auto"
+                >
                   <div className="p-7 space-y-6">
                     <div>
                       <h2 className="text-2xl font-bold text-gray-900 mb-1">
                         Create Your Account
                       </h2>
                       <p className="text-sm text-gray-600">
-                        Join thousands of travelers and start your adventure today
+                        Join thousands of travelers and start your adventure
+                        today
                       </p>
                     </div>
 
@@ -450,7 +515,10 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                         <label className="block text-sm font-semibold text-gray-900">
                           Full Name
                         </label>
-                        <div className="relative group" onMouseDown={() => setIsPasswordFieldFocused(false)}>
+                        <div
+                          className="relative group"
+                          onMouseDown={() => setIsPasswordFieldFocused(false)}
+                        >
                           <User className="absolute left-3.5 top-3.5 h-5 w-5 text-gray-400 group-focus-within:text-orange-500 transition-colors" />
                           <Input
                             type="text"
@@ -468,7 +536,10 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                         <label className="block text-sm font-semibold text-gray-900">
                           Email Address
                         </label>
-                        <div className="relative group" onMouseDown={() => setIsPasswordFieldFocused(false)}>
+                        <div
+                          className="relative group"
+                          onMouseDown={() => setIsPasswordFieldFocused(false)}
+                        >
                           <Mail className="absolute left-3.5 top-3.5 h-5 w-5 text-gray-400 group-focus-within:text-orange-500 transition-colors" />
                           <Input
                             type="text"
@@ -479,13 +550,17 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                               setSignupEmailError("");
                             }}
                             className={`w-full pl-11 pr-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500/20 bg-gray-50/50 transition-all ${
-                              signupEmailError ? 'border-red-400 focus:border-red-500 focus:ring-red-500/20' : 'border-gray-200 focus:border-orange-500'
+                              signupEmailError
+                                ? "border-red-400 focus:border-red-500 focus:ring-red-500/20"
+                                : "border-gray-200 focus:border-orange-500"
                             }`}
                             required
                           />
                         </div>
                         {signupEmailError && (
-                          <p className="text-xs text-red-500 font-medium">{signupEmailError}</p>
+                          <p className="text-xs text-red-500 font-medium">
+                            {signupEmailError}
+                          </p>
                         )}
                       </div>
 
@@ -494,20 +569,28 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                         <label className="block text-sm font-semibold text-gray-900">
                           Mobile Number
                         </label>
-                        <div className="flex gap-2" onMouseDown={() => setIsPasswordFieldFocused(false)}>
+                        <div
+                          className="flex gap-2"
+                          onMouseDown={() => setIsPasswordFieldFocused(false)}
+                        >
                           {/* Country Code Selector */}
-                          <Popover open={openCountryPopover} onOpenChange={(open) => {
-                            setOpenCountryPopover(open);
-                            if (!open) {
-                              setCountrySearch("");
-                            }
-                          }}>
+                          <Popover
+                            open={openCountryPopover}
+                            onOpenChange={(open) => {
+                              setOpenCountryPopover(open);
+                              if (!open) {
+                                setCountrySearch("");
+                              }
+                            }}
+                          >
                             <PopoverTrigger asChild>
                               <button
                                 type="button"
                                 className="px-3 py-2.5 border border-gray-200 rounded-lg bg-gray-50/50 hover:bg-gray-100 transition-all flex items-center gap-2 min-w-fit focus:outline-none focus:ring-2 focus:ring-orange-500/20"
                               >
-                                <span className="text-sm font-medium">{selectedCountry.dial}</span>
+                                <span className="text-sm font-medium">
+                                  {selectedCountry.dial}
+                                </span>
                                 <ChevronDown className="h-4 w-4 text-gray-400" />
                               </button>
                             </PopoverTrigger>
@@ -521,7 +604,9 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                                       type="text"
                                       placeholder="Search country..."
                                       value={countrySearch}
-                                      onChange={(e) => setCountrySearch(e.target.value)}
+                                      onChange={(e) =>
+                                        setCountrySearch(e.target.value)
+                                      }
                                       className="w-full pl-9 pr-3 py-2 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 bg-gray-50"
                                       autoFocus
                                     />
@@ -529,25 +614,37 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                                 </div>
 
                                 {/* Countries List */}
-                                <div className="max-h-64 overflow-y-auto" onWheel={(e) => e.stopPropagation()}>
+                                <div
+                                  className="max-h-64 overflow-y-auto"
+                                  onWheel={(e) => e.stopPropagation()}
+                                >
                                   {filteredCountries.length > 0 ? (
                                     filteredCountries.map((country) => (
                                       <button
                                         key={country.code}
                                         type="button"
-                                        onClick={() => handleCountrySelect(country)}
+                                        onClick={() =>
+                                          handleCountrySelect(country)
+                                        }
                                         className={`w-full text-left px-3 py-2.5 text-sm hover:bg-orange-50 transition-colors flex items-center justify-between ${
-                                          selectedCountry.code === country.code ? "bg-orange-100 font-semibold" : ""
+                                          selectedCountry.code === country.code
+                                            ? "bg-orange-100 font-semibold"
+                                            : ""
                                         }`}
                                       >
                                         <span>
-                                          <span className="font-medium">{country.dial}</span>
+                                          <span className="font-medium">
+                                            {country.dial}
+                                          </span>
                                           <span className="text-gray-600 ml-2">
                                             {country.name}
                                           </span>
                                         </span>
-                                        {selectedCountry.code === country.code && (
-                                          <span className="text-orange-600">✓</span>
+                                        {selectedCountry.code ===
+                                          country.code && (
+                                          <span className="text-orange-600">
+                                            ✓
+                                          </span>
                                         )}
                                       </button>
                                     ))
@@ -569,21 +666,34 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                               placeholder="9876543210"
                               value={mobileNumber}
                               onChange={(e) => {
-                                const digitsOnly = e.target.value.replace(/\D/g, '');
-                                const maxDigits = COUNTRY_DIGIT_REQUIREMENTS[selectedCountry.code]?.max || 15;
-                                const truncated = digitsOnly.slice(0, maxDigits);
+                                const digitsOnly = e.target.value.replace(
+                                  /\D/g,
+                                  "",
+                                );
+                                const maxDigits =
+                                  COUNTRY_DIGIT_REQUIREMENTS[
+                                    selectedCountry.code
+                                  ]?.max || 15;
+                                const truncated = digitsOnly.slice(
+                                  0,
+                                  maxDigits,
+                                );
                                 setMobileNumber(truncated);
                                 setMobileNumberError("");
                               }}
                               className={`w-full pl-11 pr-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 bg-gray-50/50 transition-all ${
-                                mobileNumberError ? 'border-red-400 focus:border-red-500 focus:ring-red-500/20' : 'border-gray-200 focus:border-orange-500 focus:ring-orange-500/20'
+                                mobileNumberError
+                                  ? "border-red-400 focus:border-red-500 focus:ring-red-500/20"
+                                  : "border-gray-200 focus:border-orange-500 focus:ring-orange-500/20"
                               }`}
                               required
                             />
                           </div>
                         </div>
                         {mobileNumberError && (
-                          <p className="text-xs text-red-500 font-medium">{mobileNumberError}</p>
+                          <p className="text-xs text-red-500 font-medium">
+                            {mobileNumberError}
+                          </p>
                         )}
                       </div>
 
@@ -606,7 +716,9 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                           />
                           <button
                             type="button"
-                            onClick={() => setShowSignupPassword(!showSignupPassword)}
+                            onClick={() =>
+                              setShowSignupPassword(!showSignupPassword)
+                            }
                             className="absolute right-3.5 top-3.5 text-gray-400 hover:text-gray-600 transition-colors"
                           >
                             {showSignupPassword ? (
@@ -620,37 +732,83 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                         {/* Password Requirements */}
                         {signupPassword && isPasswordFieldFocused && (
                           <div className="mt-3 p-3 bg-gray-50 rounded-lg space-y-2">
-                            <p className="text-xs font-semibold text-gray-900">Password Requirements:</p>
+                            <p className="text-xs font-semibold text-gray-900">
+                              Password Requirements:
+                            </p>
                             <div className="space-y-1.5 text-xs">
-                              <div className={`flex items-center gap-2 ${passwordValidation.requirements.length ? 'text-green-600' : 'text-gray-600'}`}>
-                                <div className={`w-4 h-4 rounded-full flex items-center justify-center ${passwordValidation.requirements.length ? 'bg-green-100' : 'bg-gray-200'}`}>
-                                  {passwordValidation.requirements.length && <span className="text-green-600 font-bold">✓</span>}
+                              <div
+                                className={`flex items-center gap-2 ${passwordValidation.requirements.length ? "text-green-600" : "text-gray-600"}`}
+                              >
+                                <div
+                                  className={`w-4 h-4 rounded-full flex items-center justify-center ${passwordValidation.requirements.length ? "bg-green-100" : "bg-gray-200"}`}
+                                >
+                                  {passwordValidation.requirements.length && (
+                                    <span className="text-green-600 font-bold">
+                                      ✓
+                                    </span>
+                                  )}
                                 </div>
                                 <span>At least 6 characters</span>
                               </div>
-                              <div className={`flex items-center gap-2 ${passwordValidation.requirements.uppercase ? 'text-green-600' : 'text-gray-600'}`}>
-                                <div className={`w-4 h-4 rounded-full flex items-center justify-center ${passwordValidation.requirements.uppercase ? 'bg-green-100' : 'bg-gray-200'}`}>
-                                  {passwordValidation.requirements.uppercase && <span className="text-green-600 font-bold">✓</span>}
+                              <div
+                                className={`flex items-center gap-2 ${passwordValidation.requirements.uppercase ? "text-green-600" : "text-gray-600"}`}
+                              >
+                                <div
+                                  className={`w-4 h-4 rounded-full flex items-center justify-center ${passwordValidation.requirements.uppercase ? "bg-green-100" : "bg-gray-200"}`}
+                                >
+                                  {passwordValidation.requirements
+                                    .uppercase && (
+                                    <span className="text-green-600 font-bold">
+                                      ✓
+                                    </span>
+                                  )}
                                 </div>
                                 <span>At least 1 uppercase letter (A-Z)</span>
                               </div>
-                              <div className={`flex items-center gap-2 ${passwordValidation.requirements.lowercase ? 'text-green-600' : 'text-gray-600'}`}>
-                                <div className={`w-4 h-4 rounded-full flex items-center justify-center ${passwordValidation.requirements.lowercase ? 'bg-green-100' : 'bg-gray-200'}`}>
-                                  {passwordValidation.requirements.lowercase && <span className="text-green-600 font-bold">✓</span>}
+                              <div
+                                className={`flex items-center gap-2 ${passwordValidation.requirements.lowercase ? "text-green-600" : "text-gray-600"}`}
+                              >
+                                <div
+                                  className={`w-4 h-4 rounded-full flex items-center justify-center ${passwordValidation.requirements.lowercase ? "bg-green-100" : "bg-gray-200"}`}
+                                >
+                                  {passwordValidation.requirements
+                                    .lowercase && (
+                                    <span className="text-green-600 font-bold">
+                                      ✓
+                                    </span>
+                                  )}
                                 </div>
                                 <span>At least 1 lowercase letter (a-z)</span>
                               </div>
-                              <div className={`flex items-center gap-2 ${passwordValidation.requirements.number ? 'text-green-600' : 'text-gray-600'}`}>
-                                <div className={`w-4 h-4 rounded-full flex items-center justify-center ${passwordValidation.requirements.number ? 'bg-green-100' : 'bg-gray-200'}`}>
-                                  {passwordValidation.requirements.number && <span className="text-green-600 font-bold">✓</span>}
+                              <div
+                                className={`flex items-center gap-2 ${passwordValidation.requirements.number ? "text-green-600" : "text-gray-600"}`}
+                              >
+                                <div
+                                  className={`w-4 h-4 rounded-full flex items-center justify-center ${passwordValidation.requirements.number ? "bg-green-100" : "bg-gray-200"}`}
+                                >
+                                  {passwordValidation.requirements.number && (
+                                    <span className="text-green-600 font-bold">
+                                      ✓
+                                    </span>
+                                  )}
                                 </div>
                                 <span>At least 1 number (0-9)</span>
                               </div>
-                              <div className={`flex items-center gap-2 ${passwordValidation.requirements.special ? 'text-green-600' : 'text-gray-600'}`}>
-                                <div className={`w-4 h-4 rounded-full flex items-center justify-center ${passwordValidation.requirements.special ? 'bg-green-100' : 'bg-gray-200'}`}>
-                                  {passwordValidation.requirements.special && <span className="text-green-600 font-bold">✓</span>}
+                              <div
+                                className={`flex items-center gap-2 ${passwordValidation.requirements.special ? "text-green-600" : "text-gray-600"}`}
+                              >
+                                <div
+                                  className={`w-4 h-4 rounded-full flex items-center justify-center ${passwordValidation.requirements.special ? "bg-green-100" : "bg-gray-200"}`}
+                                >
+                                  {passwordValidation.requirements.special && (
+                                    <span className="text-green-600 font-bold">
+                                      ✓
+                                    </span>
+                                  )}
                                 </div>
-                                <span>At least 1 special character (!@#$%^&*)</span>
+                                <span>
+                                  At least 1 special character (!@#$%^&*)
+                                </span>
                               </div>
                             </div>
                           </div>
@@ -662,7 +820,10 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                         <label className="block text-sm font-semibold text-gray-900">
                           Confirm Password
                         </label>
-                        <div className="relative group" onMouseDown={() => setIsPasswordFieldFocused(false)}>
+                        <div
+                          className="relative group"
+                          onMouseDown={() => setIsPasswordFieldFocused(false)}
+                        >
                           <Lock className="absolute left-3.5 top-3.5 h-5 w-5 text-gray-400 group-focus-within:text-orange-500 transition-colors" />
                           <Input
                             type={showConfirmPassword ? "text" : "password"}
@@ -670,13 +831,17 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             className={`w-full pl-11 pr-12 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500/20 bg-gray-50/50 transition-all ${
-                              confirmPassword && !passwordsMatch ? 'border-red-400 focus:border-red-500' : 'border-gray-200 focus:border-orange-500'
+                              confirmPassword && !passwordsMatch
+                                ? "border-red-400 focus:border-red-500"
+                                : "border-gray-200 focus:border-orange-500"
                             }`}
                             required
                           />
                           <button
                             type="button"
-                            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                            onClick={() =>
+                              setShowConfirmPassword(!showConfirmPassword)
+                            }
                             className="absolute right-3.5 top-3.5 text-gray-400 hover:text-gray-600 transition-colors"
                           >
                             {showConfirmPassword ? (
@@ -687,7 +852,9 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                           </button>
                         </div>
                         {confirmPassword && !passwordsMatch && (
-                          <p className="text-xs text-red-500 font-medium">Passwords do not match</p>
+                          <p className="text-xs text-red-500 font-medium">
+                            Passwords do not match
+                          </p>
                         )}
                         {confirmPassword && passwordsMatch && (
                           <p className="text-xs text-green-600 font-medium flex items-center gap-1">
@@ -697,7 +864,10 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                       </div>
 
                       {/* Terms Checkbox */}
-                      <label className="flex items-start gap-2 cursor-pointer group mt-3" onMouseDown={() => setIsPasswordFieldFocused(false)}>
+                      <label
+                        className="flex items-start gap-2 cursor-pointer group mt-3"
+                        onMouseDown={() => setIsPasswordFieldFocused(false)}
+                      >
                         <input
                           type="checkbox"
                           checked={agreeTerms}
@@ -707,11 +877,19 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                         />
                         <span className="text-sm text-gray-700 group-hover:text-gray-900 transition-colors">
                           I agree to the{" "}
-                          <a href="/terms-and-condition" className="text-orange-600 hover:text-orange-700 font-semibold" onMouseDown={() => setIsPasswordFieldFocused(false)}>
+                          <a
+                            href="/terms-and-condition"
+                            className="text-orange-600 hover:text-orange-700 font-semibold"
+                            onMouseDown={() => setIsPasswordFieldFocused(false)}
+                          >
                             Terms & Conditions
-                          </a>
-                          {" "}and{" "}
-                          <a href="/privacy-policy" className="text-orange-600 hover:text-orange-700 font-semibold" onMouseDown={() => setIsPasswordFieldFocused(false)}>
+                          </a>{" "}
+                          and{" "}
+                          <a
+                            href="/privacy-policy"
+                            className="text-orange-600 hover:text-orange-700 font-semibold"
+                            onMouseDown={() => setIsPasswordFieldFocused(false)}
+                          >
                             Privacy Policy
                           </a>
                         </span>
@@ -720,7 +898,18 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                       {/* Sign Up Button */}
                       <button
                         type="submit"
-                        disabled={!isPasswordValid || !fullName || !signupEmail || !validateEmail(signupEmail) || !mobileNumber || !validateInternationalMobile(mobileNumber, selectedCountry.code) || !agreeTerms}
+                        disabled={
+                          !isPasswordValid ||
+                          !fullName ||
+                          !signupEmail ||
+                          !validateEmail(signupEmail) ||
+                          !mobileNumber ||
+                          !validateInternationalMobile(
+                            mobileNumber,
+                            selectedCountry.code,
+                          ) ||
+                          !agreeTerms
+                        }
                         className="w-full mt-3 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 disabled:from-gray-400 disabled:to-gray-400 disabled:cursor-not-allowed text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition-all duration-200 shadow-lg hover:shadow-xl"
                       >
                         Create Account
@@ -739,8 +928,14 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
 
                     {/* Google Sign Up */}
                     <div className="grid grid-cols-1 gap-3">
-                      <button onMouseDown={() => setIsPasswordFieldFocused(false)} className="border-2 border-gray-200 text-gray-700 font-semibold py-2.5 px-4 rounded-lg hover:border-orange-200 hover:bg-orange-50/30 transition-all duration-200 flex items-center justify-center gap-2 group">
-                        <svg className="w-5 h-5 group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+                      <button
+                        onMouseDown={() => setIsPasswordFieldFocused(false)}
+                        className="border-2 border-gray-200 text-gray-700 font-semibold py-2.5 px-4 rounded-lg hover:border-orange-200 hover:bg-orange-50/30 transition-all duration-200 flex items-center justify-center gap-2 group"
+                      >
+                        <svg
+                          className="w-5 h-5 group-hover:scale-110 transition-transform"
+                          viewBox="0 0 24 24"
+                        >
                           <path
                             fill="#4285F4"
                             d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -770,7 +965,7 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                           type="button"
                           onClick={(e) => {
                             e.preventDefault();
-                            setActiveTab('login');
+                            setActiveTab("login");
                           }}
                           onMouseDown={() => setIsPasswordFieldFocused(false)}
                           className="text-orange-600 hover:text-orange-700 font-semibold transition-colors"
@@ -787,12 +982,20 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                       </p>
                       <div className="grid grid-cols-2 gap-3">
                         <div className="bg-gradient-to-br from-green-50 to-green-50/50 p-3 rounded-lg border border-green-100">
-                          <div className="text-lg font-bold text-green-600">4.8</div>
-                          <p className="text-xs text-gray-600 mt-1">2.5K+ Reviews</p>
+                          <div className="text-lg font-bold text-green-600">
+                            4.8
+                          </div>
+                          <p className="text-xs text-gray-600 mt-1">
+                            2.5K+ Reviews
+                          </p>
                         </div>
                         <div className="bg-gradient-to-br from-blue-50 to-blue-50/50 p-3 rounded-lg border border-blue-100">
-                          <div className="text-lg font-bold text-blue-600">4.6</div>
-                          <p className="text-xs text-gray-600 mt-1">15K+ Bookings</p>
+                          <div className="text-lg font-bold text-blue-600">
+                            4.6
+                          </div>
+                          <p className="text-xs text-gray-600 mt-1">
+                            15K+ Bookings
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -800,11 +1003,17 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                     {/* Terms Text */}
                     <p className="text-xs text-gray-500 text-center mt-4">
                       By continuing, you agree to StoriesByFoot's{" "}
-                      <a href="/terms-and-condition" className="text-orange-600 hover:underline">
+                      <a
+                        href="/terms-and-condition"
+                        className="text-orange-600 hover:underline"
+                      >
                         Terms & Conditions
-                      </a>
-                      {" "}and{" "}
-                      <a href="/privacy-policy" className="text-orange-600 hover:underline">
+                      </a>{" "}
+                      and{" "}
+                      <a
+                        href="/privacy-policy"
+                        className="text-orange-600 hover:underline"
+                      >
                         Privacy Policy
                       </a>
                     </p>
@@ -819,7 +1028,8 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                     Forgotten Your Password?
                   </h2>
                   <p className="text-sm text-gray-600">
-                    Don't worry, we'll send you a message to help you reset your password.
+                    Don't worry, we'll send you a message to help you reset your
+                    password.
                   </p>
                 </div>
 
@@ -840,13 +1050,17 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                           setForgotPasswordEmailError("");
                         }}
                         className={`w-full pl-11 pr-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500/20 bg-gray-50/50 transition-all ${
-                          forgotPasswordEmailError ? 'border-red-400 focus:border-red-500 focus:ring-red-500/20' : 'border-gray-200 focus:border-orange-500'
+                          forgotPasswordEmailError
+                            ? "border-red-400 focus:border-red-500 focus:ring-red-500/20"
+                            : "border-gray-200 focus:border-orange-500"
                         }`}
                         required
                       />
                     </div>
                     {forgotPasswordEmailError && (
-                      <p className="text-xs text-red-500 font-medium">{forgotPasswordEmailError}</p>
+                      <p className="text-xs text-red-500 font-medium">
+                        {forgotPasswordEmailError}
+                      </p>
                     )}
                   </div>
 
@@ -882,12 +1096,18 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                   </p>
                   <div className="grid grid-cols-2 gap-3">
                     <div className="bg-gradient-to-br from-green-50 to-green-50/50 p-3 rounded-lg border border-green-100">
-                      <div className="text-lg font-bold text-green-600">4.8</div>
-                      <p className="text-xs text-gray-600 mt-1">2.5K+ Reviews</p>
+                      <div className="text-lg font-bold text-green-600">
+                        4.8
+                      </div>
+                      <p className="text-xs text-gray-600 mt-1">
+                        2.5K+ Reviews
+                      </p>
                     </div>
                     <div className="bg-gradient-to-br from-blue-50 to-blue-50/50 p-3 rounded-lg border border-blue-100">
                       <div className="text-lg font-bold text-blue-600">4.6</div>
-                      <p className="text-xs text-gray-600 mt-1">15K+ Bookings</p>
+                      <p className="text-xs text-gray-600 mt-1">
+                        15K+ Bookings
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -895,11 +1115,17 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                 {/* Terms Text */}
                 <p className="text-xs text-gray-500 text-center mt-4">
                   By continuing, you agree to StoriesByFoot's{" "}
-                  <a href="/terms-and-condition" className="text-orange-600 hover:underline">
+                  <a
+                    href="/terms-and-condition"
+                    className="text-orange-600 hover:underline"
+                  >
                     Terms & Conditions
-                  </a>
-                  {" "}and{" "}
-                  <a href="/privacy-policy" className="text-orange-600 hover:underline">
+                  </a>{" "}
+                  and{" "}
+                  <a
+                    href="/privacy-policy"
+                    className="text-orange-600 hover:underline"
+                  >
                     Privacy Policy
                   </a>
                 </p>
@@ -909,7 +1135,10 @@ export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
         </div>
 
         <DialogClose asChild>
-          <button aria-label="Close" className="absolute right-3 top-3 z-[99999] text-gray-700 hover:text-gray-900 bg-white border border-gray-200 hover:bg-gray-50 rounded-full p-1.5 shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500">
+          <button
+            aria-label="Close"
+            className="absolute right-3 top-3 z-[99999] text-gray-700 hover:text-gray-900 bg-white border border-gray-200 hover:bg-gray-50 rounded-full p-1.5 shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+          >
             <X className="h-5 w-5" />
           </button>
         </DialogClose>
