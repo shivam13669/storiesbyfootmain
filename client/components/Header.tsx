@@ -111,6 +111,8 @@ export default function Header() {
           </div>
         )}
       </nav>
+
+      <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)} />
     </header>
   );
 }
