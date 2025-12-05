@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CurrencyPicker } from "./CurrencyPicker";
+import { LoginModal } from "./LoginModal";
 import { useCurrency } from "@/contexts/CurrencyContext";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const { currency, setCurrency } = useCurrency();
 
   const navItems = [
@@ -54,12 +56,12 @@ export default function Header() {
               onChange={setCurrency}
               variant="light"
             />
-            <Link
-              to="/login"
+            <button
+              onClick={() => setIsLoginModalOpen(true)}
               className="px-6 py-2 border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-lg font-medium transition-colors"
             >
               Login
-            </Link>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -95,18 +97,25 @@ export default function Header() {
                     className="w-full justify-center"
                   />
                 </div>
-                <Link
-                  to="/login"
+                <button
+                  onClick={() => {
+                    setIsLoginModalOpen(true);
+                    setIsOpen(false);
+                  }}
                   className="flex-1 px-4 py-2 border-2 border-primary text-primary rounded-lg font-medium text-center"
-                  onClick={() => setIsOpen(false)}
                 >
                   Login
-                </Link>
+                </button>
               </div>
             </div>
           </div>
         )}
       </nav>
+
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        onClose={() => setIsLoginModalOpen(false)}
+      />
     </header>
   );
 }
