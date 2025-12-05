@@ -42,14 +42,16 @@ const CURRENCY_SYMBOLS: Record<string, string> = {
   KWD: "د.ك",
 };
 
-async function fetchExchangeRates(baseCurrency: string) {
+async function fetchExchangeRates(baseCurrency: string): Promise<Record<string, number>> {
   try {
     const res = await fetch(
       `https://api.exchangerate.host/latest?base=${baseCurrency}`
     );
     if (res.ok) {
       const data = await res.json();
-      return data.rates as Record<string, number>;
+      if (data && typeof data.rates === "object" && data.rates !== null) {
+        return data.rates as Record<string, number>;
+      }
     }
   } catch (error) {
     console.error("Primary API failed, trying fallback...", error);
@@ -61,7 +63,9 @@ async function fetchExchangeRates(baseCurrency: string) {
     );
     if (res.ok) {
       const data = await res.json();
-      return data.rates as Record<string, number>;
+      if (data && typeof data.rates === "object" && data.rates !== null) {
+        return data.rates as Record<string, number>;
+      }
     }
   } catch (error) {
     console.error("Fallback API failed", error);
