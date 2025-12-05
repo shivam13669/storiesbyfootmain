@@ -56,12 +56,12 @@ export default function Header() {
               onChange={setCurrency}
               variant="light"
             />
-            <Link
-              to="/login"
+            <button
+              onClick={() => setIsLoginModalOpen(true)}
               className="px-6 py-2 border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-lg font-medium transition-colors"
             >
               Login
-            </Link>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
