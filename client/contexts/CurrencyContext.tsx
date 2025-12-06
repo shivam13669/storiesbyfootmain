@@ -66,35 +66,13 @@ async function fetchExchangeRates(
       }
     }
   } catch (error) {
-    console.error("[PRIMARY API] Failed, trying fallback...", error);
+    console.error("[PRIMARY API] Failed:", error);
   }
 
-  try {
-    const res = await fetch(
-      `https://api.frankfurter.app/latest?from=${baseCurrency}`,
-    );
-    if (res.ok) {
-      const data = await res.json();
-      if (data.rates && typeof data.rates === "object") {
-        console.log(
-          `[FALLBACK API] Fallback rates fetched for base ${baseCurrency}:`,
-          Object.keys(data.rates).length,
-          "currencies",
-        );
-        console.log("[FALLBACK API] Full API Response:", data);
-        console.log("[FALLBACK API] rates.KWD =", data.rates.KWD);
-        console.log("[FALLBACK API] rates.INR =", data.rates.INR);
-        const ratesWithMeta = data.rates as Record<string, number> & { _apiBase?: string };
-        ratesWithMeta._apiBase = "frankfurter.app";
-        return ratesWithMeta;
-      }
-    }
-  } catch (error) {
-    console.error("[FALLBACK API] Failed", error);
-  }
-
-  console.warn(`No exchange rates found for ${baseCurrency}, using fallback`);
-  return { [baseCurrency]: 1, _apiBase: "fallback" };
+  console.warn(
+    `Exchange rates for ${baseCurrency} unavailable from API, using offline fallback`,
+  );
+  return { [baseCurrency]: 1, _apiBase: "offline-fallback" };
 }
 
 export function CurrencyProvider({ children }: { children: React.ReactNode }) {
