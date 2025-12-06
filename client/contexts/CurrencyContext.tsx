@@ -97,9 +97,11 @@ async function fetchExchangeRates(
     console.error("[PRIMARY API] Failed:", error);
   }
 
-  console.warn(
-    `Exchange rates for ${baseCurrency} unavailable from API, using offline fallback`,
-  );
+  if (process.env.NODE_ENV === "development") {
+    console.warn(
+      `Exchange rates for ${baseCurrency} unavailable from API, using offline fallback`,
+    );
+  }
 
   // Build offline fallback rates relative to the selected base currency
   const fallbackRates: Record<string, number> & { _apiBase?: string } = {
