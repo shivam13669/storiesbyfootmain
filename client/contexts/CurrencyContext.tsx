@@ -122,6 +122,11 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
         }
       }
     }
+    const apiBase = (rates as any)?._apiBase || "unknown";
+    console.log("[RATES MAP] Built rates map from API base:", apiBase);
+    console.log("[RATES MAP] Full rates map:", map);
+    console.log("[RATES MAP] map.INR =", map.INR, "(should be 1)");
+    console.log("[RATES MAP] map.KWD =", map.KWD, "(should be ~0.0036-0.0038 if INR-based)");
     return map;
   }, [rates]);
 
