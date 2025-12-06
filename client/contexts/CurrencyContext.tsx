@@ -83,15 +83,15 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
   });
 
   const { data: rates = {}, isLoading } = useQuery({
-    queryKey: ["exchangeRates", currency],
-    queryFn: () => fetchExchangeRates(currency),
-    staleTime: 1000 * 60 * 5, // 5 minutes
-    refetchInterval: 1000 * 60 * 5, // Refresh every 5 minutes
+    queryKey: ["exchangeRates"],
+    queryFn: () => fetchExchangeRates("USD"),
+    staleTime: 1000 * 60 * 5,
+    refetchInterval: 1000 * 60 * 5,
     refetchOnWindowFocus: false,
   });
 
   const ratesMap = useMemo(() => {
-    const map: Record<string, number> = { [currency]: 1 };
+    const map: Record<string, number> = { USD: 1 };
     if (rates && typeof rates === "object") {
       for (const [code, rate] of Object.entries(rates)) {
         if (typeof rate === "number" && rate > 0) {
@@ -100,7 +100,7 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
       }
     }
     return map;
-  }, [rates, currency]);
+  }, [rates]);
 
   const convertPrice = (
     basePrice: number,
