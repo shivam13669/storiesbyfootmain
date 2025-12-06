@@ -86,9 +86,6 @@ async function fetchExchangeRates(
           Object.keys(data.rates).length,
           "currencies",
         );
-        console.log("[PRIMARY API] Full API Response:", data);
-        console.log("[PRIMARY API] rates.KWD =", data.rates.KWD);
-        console.log("[PRIMARY API] rates.INR =", data.rates.INR);
         const ratesWithMeta = data.rates as Record<string, number> & {
           _apiBase?: string;
         };
@@ -103,7 +100,19 @@ async function fetchExchangeRates(
   console.warn(
     `Exchange rates for ${baseCurrency} unavailable from API, using offline fallback`,
   );
-  return { [baseCurrency]: 1, _apiBase: "offline-fallback" };
+
+  // Build offline fallback rates relative to the selected base currency
+  const fallbackRates: Record<string, number> & { _apiBase?: string } = {
+    _apiBase: "offline-fallback",
+  };
+
+  const baseRate = OFFLINE_FALLBACK_RATES[baseCurrency] || 1;
+
+  for (const [code, rate] of Object.entries(OFFLINE_FALLBACK_RATES)) {
+    fallbackRates[code] = rate / baseRate;
+  }
+
+  return fallbackRates;
 }
 
 export function CurrencyProvider({ children }: { children: React.ReactNode }) {
