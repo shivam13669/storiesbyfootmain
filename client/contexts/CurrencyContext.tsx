@@ -44,7 +44,7 @@ const CURRENCY_SYMBOLS: Record<string, string> = {
 
 async function fetchExchangeRates(
   baseCurrency: string,
-): Promise<Record<string, number>> {
+): Promise<Record<string, number> & { _apiBase?: string }> {
   try {
     const res = await fetch(
       `https://api.exchangerate.host/latest?base=${baseCurrency}`,
@@ -53,15 +53,20 @@ async function fetchExchangeRates(
       const data = await res.json();
       if (data.rates && typeof data.rates === "object") {
         console.log(
-          `Exchange rates fetched for base ${baseCurrency}:`,
+          `[PRIMARY API] Exchange rates fetched for base ${baseCurrency}:`,
           Object.keys(data.rates).length,
           "currencies",
         );
-        return data.rates as Record<string, number>;
+        console.log("[PRIMARY API] Full API Response:", data);
+        console.log("[PRIMARY API] rates.KWD =", data.rates.KWD);
+        console.log("[PRIMARY API] rates.INR =", data.rates.INR);
+        const ratesWithMeta = data.rates as Record<string, number> & { _apiBase?: string };
+        ratesWithMeta._apiBase = "exchangerate.host";
+        return ratesWithMeta;
       }
     }
   } catch (error) {
-    console.error("Primary API failed, trying fallback...", error);
+    console.error("[PRIMARY API] Failed, trying fallback...", error);
   }
 
   try {
@@ -72,19 +77,24 @@ async function fetchExchangeRates(
       const data = await res.json();
       if (data.rates && typeof data.rates === "object") {
         console.log(
-          `Fallback rates fetched for base ${baseCurrency}:`,
+          `[FALLBACK API] Fallback rates fetched for base ${baseCurrency}:`,
           Object.keys(data.rates).length,
           "currencies",
         );
-        return data.rates as Record<string, number>;
+        console.log("[FALLBACK API] Full API Response:", data);
+        console.log("[FALLBACK API] rates.KWD =", data.rates.KWD);
+        console.log("[FALLBACK API] rates.INR =", data.rates.INR);
+        const ratesWithMeta = data.rates as Record<string, number> & { _apiBase?: string };
+        ratesWithMeta._apiBase = "frankfurter.app";
+        return ratesWithMeta;
       }
     }
   } catch (error) {
-    console.error("Fallback API failed", error);
+    console.error("[FALLBACK API] Failed", error);
   }
 
   console.warn(`No exchange rates found for ${baseCurrency}, using fallback`);
-  return { [baseCurrency]: 1 };
+  return { [baseCurrency]: 1, _apiBase: "fallback" };
 }
 
 export function CurrencyProvider({ children }: { children: React.ReactNode }) {
