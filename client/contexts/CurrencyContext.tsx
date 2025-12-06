@@ -141,12 +141,15 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
 
     const result = (basePrice / fromRate) * toRate;
 
-    // Debug logging
-    if (process.env.NODE_ENV === "development") {
-      console.log(
-        `Convert ${basePrice} from ${fromCurrency} to ${currency}: ${fromRate} -> ${toRate} = ${result}`,
-      );
-    }
+    // Always log for debugging
+    console.log(
+      `[CONVERSION] Convert ${basePrice} from ${fromCurrency} to ${currency}`,
+    );
+    console.log(`[CONVERSION] fromRate (${fromCurrency}) = ${fromRate}`);
+    console.log(`[CONVERSION] toRate (${currency}) = ${toRate}`);
+    console.log(
+      `[CONVERSION] Formula: (${basePrice} / ${fromRate}) * ${toRate} = ${result}`,
+    );
 
     return result;
   };
