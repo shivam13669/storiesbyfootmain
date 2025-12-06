@@ -60,7 +60,9 @@ async function fetchExchangeRates(
         console.log("[PRIMARY API] Full API Response:", data);
         console.log("[PRIMARY API] rates.KWD =", data.rates.KWD);
         console.log("[PRIMARY API] rates.INR =", data.rates.INR);
-        const ratesWithMeta = data.rates as Record<string, number> & { _apiBase?: string };
+        const ratesWithMeta = data.rates as Record<string, number> & {
+          _apiBase?: string;
+        };
         ratesWithMeta._apiBase = "exchangerate.host";
         return ratesWithMeta;
       }
