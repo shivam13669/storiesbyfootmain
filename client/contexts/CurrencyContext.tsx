@@ -87,14 +87,14 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
 
   const { data: rates = {}, isLoading } = useQuery({
     queryKey: ["exchangeRates"],
-    queryFn: () => fetchExchangeRates("USD"),
+    queryFn: () => fetchExchangeRates("INR"),
     staleTime: 1000 * 60 * 5,
     refetchInterval: 1000 * 60 * 5,
     refetchOnWindowFocus: false,
   });
 
   const ratesMap = useMemo(() => {
-    const map: Record<string, number> = { USD: 1 };
+    const map: Record<string, number> = { INR: 1 };
     if (rates && typeof rates === "object") {
       for (const [code, rate] of Object.entries(rates)) {
         if (typeof rate === "number" && rate > 0) {
