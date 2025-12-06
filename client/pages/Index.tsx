@@ -324,7 +324,7 @@ export default function Index() {
                     <div className="flex items-center justify-between">
                       <span className="text-2xl font-bold text-primary">
                         {getSymbol(currency)}
-                        {Math.round(convertPrice(destination.price, "USD"))}
+                        {Math.round(convertPrice(destination.price, "INR"))}
                       </span>
                       <div className="text-primary group-hover:translate-x-2 transition-transform">
                         <ArrowRight className="w-5 h-5" />
