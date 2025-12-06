@@ -42,6 +42,35 @@ const CURRENCY_SYMBOLS: Record<string, string> = {
   KWD: "د.ك",
 };
 
+// Offline fallback rates relative to USD (1 USD = X local currency)
+const OFFLINE_FALLBACK_RATES: Record<string, number> = {
+  USD: 1,
+  INR: 83.25,
+  EUR: 0.92,
+  GBP: 0.79,
+  AED: 3.67,
+  SGD: 1.35,
+  AUD: 1.52,
+  CAD: 1.36,
+  JPY: 149.5,
+  CNY: 7.24,
+  CHF: 0.88,
+  HKD: 7.81,
+  NZD: 1.67,
+  SEK: 10.5,
+  NOK: 10.72,
+  DKK: 6.86,
+  ZAR: 18.5,
+  THB: 35.8,
+  MYR: 4.72,
+  IDR: 16000,
+  LKR: 329,
+  BHD: 0.376,
+  QAR: 3.64,
+  OMR: 0.385,
+  KWD: 0.305,
+};
+
 async function fetchExchangeRates(
   baseCurrency: string,
 ): Promise<Record<string, number> & { _apiBase?: string }> {
@@ -57,9 +86,6 @@ async function fetchExchangeRates(
           Object.keys(data.rates).length,
           "currencies",
         );
-        console.log("[PRIMARY API] Full API Response:", data);
-        console.log("[PRIMARY API] rates.KWD =", data.rates.KWD);
-        console.log("[PRIMARY API] rates.INR =", data.rates.INR);
         const ratesWithMeta = data.rates as Record<string, number> & {
           _apiBase?: string;
         };
@@ -74,7 +100,19 @@ async function fetchExchangeRates(
   console.warn(
     `Exchange rates for ${baseCurrency} unavailable from API, using offline fallback`,
   );
-  return { [baseCurrency]: 1, _apiBase: "offline-fallback" };
+
+  // Build offline fallback rates relative to the selected base currency
+  const fallbackRates: Record<string, number> & { _apiBase?: string } = {
+    _apiBase: "offline-fallback",
+  };
+
+  const baseRate = OFFLINE_FALLBACK_RATES[baseCurrency] || 1;
+
+  for (const [code, rate] of Object.entries(OFFLINE_FALLBACK_RATES)) {
+    fallbackRates[code] = rate / baseRate;
+  }
+
+  return fallbackRates;
 }
 
 export function CurrencyProvider({ children }: { children: React.ReactNode }) {
