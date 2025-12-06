@@ -2,7 +2,6 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
-import { handleExchangeRates } from "./routes/exchange-rates";
 
 export function createServer() {
   const app = express();
@@ -19,7 +18,6 @@ export function createServer() {
   });
 
   app.get("/api/demo", handleDemo);
-  app.get("/api/exchange-rates", handleExchangeRates);
 
   return app;
 }

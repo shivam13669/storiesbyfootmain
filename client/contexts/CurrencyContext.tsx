@@ -75,20 +75,31 @@ async function fetchExchangeRates(
   baseCurrency: string,
 ): Promise<Record<string, number> & { _apiBase?: string }> {
   try {
-    const res = await fetch(`/api/exchange-rates?base=${baseCurrency}`);
+    const res = await fetch(
+      `https://api.exchangerate.host/latest?base=${baseCurrency}`,
+    );
     if (res.ok) {
       const data = await res.json();
       if (data.rates && typeof data.rates === "object") {
+        console.log(
+          `[PRIMARY API] Exchange rates fetched for base ${baseCurrency}:`,
+          Object.keys(data.rates).length,
+          "currencies",
+        );
         const ratesWithMeta = data.rates as Record<string, number> & {
           _apiBase?: string;
         };
-        ratesWithMeta._apiBase = data._apiBase || "api";
+        ratesWithMeta._apiBase = "exchangerate.host";
         return ratesWithMeta;
       }
     }
   } catch (error) {
-    console.error("[EXCHANGE RATES] Failed to fetch:", error);
+    console.error("[PRIMARY API] Failed:", error);
   }
+
+  console.warn(
+    `Exchange rates for ${baseCurrency} unavailable from API, using offline fallback`,
+  );
 
   // Build offline fallback rates relative to the selected base currency
   const fallbackRates: Record<string, number> & { _apiBase?: string } = {
