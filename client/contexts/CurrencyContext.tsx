@@ -50,6 +50,7 @@ async function fetchExchangeRates(baseCurrency: string): Promise<Record<string, 
     if (res.ok) {
       const data = await res.json();
       if (data.rates && typeof data.rates === "object") {
+        console.log(`Exchange rates fetched for base ${baseCurrency}:`, Object.keys(data.rates).length, "currencies");
         return data.rates as Record<string, number>;
       }
     }
@@ -64,6 +65,7 @@ async function fetchExchangeRates(baseCurrency: string): Promise<Record<string, 
     if (res.ok) {
       const data = await res.json();
       if (data.rates && typeof data.rates === "object") {
+        console.log(`Fallback rates fetched for base ${baseCurrency}:`, Object.keys(data.rates).length, "currencies");
         return data.rates as Record<string, number>;
       }
     }
@@ -71,6 +73,7 @@ async function fetchExchangeRates(baseCurrency: string): Promise<Record<string, 
     console.error("Fallback API failed", error);
   }
 
+  console.warn(`No exchange rates found for ${baseCurrency}, using fallback`);
   return { [baseCurrency]: 1 };
 }
 
