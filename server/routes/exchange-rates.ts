@@ -69,12 +69,17 @@ async function fetchExchangeRates(
 }
 
 export const handleExchangeRates: RequestHandler = async (req, res) => {
-  const baseCurrency = (req.query.base as string) || "INR";
+  try {
+    const baseCurrency = (req.query.base as string) || "INR";
 
-  if (!baseCurrency.match(/^[A-Z]{3}$/)) {
-    return res.status(400).json({ error: "Invalid currency code" });
+    if (!baseCurrency.match(/^[A-Z]{3}$/)) {
+      return res.status(400).json({ error: "Invalid currency code" });
+    }
+
+    const result = await fetchExchangeRates(baseCurrency);
+    res.json(result);
+  } catch (error) {
+    console.error("[EXCHANGE RATES] Handler error:", error);
+    res.status(500).json({ error: "Failed to fetch exchange rates" });
   }
-
-  const result = await fetchExchangeRates(baseCurrency);
-  res.json(result);
 };
