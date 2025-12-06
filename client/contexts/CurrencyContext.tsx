@@ -114,7 +114,16 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
     const fromRate = ratesMap[fromCurrency] ?? 1;
     const toRate = ratesMap[currency] ?? 1;
 
-    return (basePrice / fromRate) * toRate;
+    const result = (basePrice / fromRate) * toRate;
+
+    // Debug logging
+    if (process.env.NODE_ENV === "development") {
+      console.log(
+        `Convert ${basePrice} from ${fromCurrency} to ${currency}: ${fromRate} -> ${toRate} = ${result}`
+      );
+    }
+
+    return result;
   };
 
   const formatPrice = (
