@@ -77,9 +77,9 @@ async function fetchExchangeRates(baseCurrency: string): Promise<Record<string, 
 export function CurrencyProvider({ children }: { children: React.ReactNode }) {
   const [currency, setCurrencyState] = useState(() => {
     if (typeof window !== "undefined") {
-      return localStorage.getItem("selectedCurrency") || "USD";
+      return localStorage.getItem("selectedCurrency") || "INR";
     }
-    return "USD";
+    return "INR";
   });
 
   const { data: rates = {}, isLoading } = useQuery({
