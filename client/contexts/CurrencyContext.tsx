@@ -106,13 +106,20 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
     return "USD";
   });
 
-  const { data: rates = {}, isLoading } = useQuery({
+  const [ratesSource, setRatesSource] = useState<"live" | "cache" | "offline">(
+    "live",
+  );
+  const [notificationShown, setNotificationShown] = useState(false);
+
+  const { data: ratesData, isLoading } = useQuery({
     queryKey: ["exchangeRates", currency],
     queryFn: () => fetchExchangeRates(currency),
     staleTime: 1000 * 60 * 5, // 5 minutes
     refetchInterval: 1000 * 60 * 5, // Refresh every 5 minutes
     refetchOnWindowFocus: false,
   });
+
+  const rates = ratesData?.rates || {};
 
   const ratesMap = useMemo(() => {
     const map: Record<string, number> = { [currency]: 1 };
