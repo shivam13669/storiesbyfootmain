@@ -200,6 +200,8 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
         getSymbol,
         formatPrice,
         isLoading,
+        isUsingCache: ratesSource !== "live",
+        ratesSource,
       }}
     >
       {children}
