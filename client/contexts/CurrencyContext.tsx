@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { getCachedRates, cacheRates } from "@/lib/currency-cache";
+import { toast } from "sonner";
 
 interface CurrencyContextType {
   currency: string;
@@ -8,6 +10,8 @@ interface CurrencyContextType {
   getSymbol: (code: string) => string;
   formatPrice: (basePrice: number, fromCurrency?: string) => string;
   isLoading: boolean;
+  isUsingCache: boolean;
+  ratesSource: "live" | "cache" | "offline";
 }
 
 const CurrencyContext = createContext<CurrencyContextType | undefined>(
