@@ -121,6 +121,31 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
 
   const rates = ratesData?.rates || {};
 
+  React.useEffect(() => {
+    if (!ratesData) return;
+
+    const source = ratesData.source;
+    setRatesSource(source);
+
+    if (source === "cache" && !notificationShown) {
+      toast.warning("Using cached exchange rates (offline mode)", {
+        description:
+          "Real-time rates are unavailable. Exchange rates may be outdated.",
+        duration: 6000,
+      });
+      setNotificationShown(true);
+    } else if (source === "offline" && !notificationShown) {
+      toast.error("Exchange rates unavailable", {
+        description:
+          "Using fallback rates. Prices may not be accurate. Please check your connection.",
+        duration: 6000,
+      });
+      setNotificationShown(true);
+    } else if (source === "live" && notificationShown) {
+      setNotificationShown(false);
+    }
+  }, [ratesData, notificationShown]);
+
   const ratesMap = useMemo(() => {
     const map: Record<string, number> = { [currency]: 1 };
     if (rates && typeof rates === "object") {
