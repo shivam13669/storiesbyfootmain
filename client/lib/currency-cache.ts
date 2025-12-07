@@ -81,7 +81,9 @@ export async function cacheRates(
   }
 }
 
-export async function getCacheAge(baseCurrency: string): Promise<number | null> {
+export async function getCacheAge(
+  baseCurrency: string,
+): Promise<number | null> {
   const cached = await getCachedRates(baseCurrency);
   if (!cached) return null;
   return Date.now() - cached.timestamp;

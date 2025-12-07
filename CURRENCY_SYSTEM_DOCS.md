@@ -7,6 +7,7 @@ The currency exchange system now implements a **4-level fallback architecture** 
 ## Architecture
 
 ### Level 1: Live Exchange Rates (Primary API)
+
 - **Endpoint**: `https://api.exchangerate.host/latest?base={currency}`
 - **Priority**: Highest
 - **Cache behavior**: Saves successful rates to IndexedDB
@@ -14,6 +15,7 @@ The currency exchange system now implements a **4-level fallback architecture** 
 - **Status indicator**: "live"
 
 ### Level 2: Live Exchange Rates (Fallback API)
+
 - **Endpoint**: `https://api.frankfurter.app/latest?from={currency}`
 - **Priority**: Used if Primary API fails
 - **Cache behavior**: Saves successful rates to IndexedDB
@@ -21,6 +23,7 @@ The currency exchange system now implements a **4-level fallback architecture** 
 - **Status indicator**: "live"
 
 ### Level 3: Cached Rates (IndexedDB)
+
 - **Storage**: Browser IndexedDB (`CurrencyCache` database)
 - **Key**: Base currency code (e.g., "INR", "USD")
 - **Data**: Full rate object + timestamp
@@ -32,6 +35,7 @@ The currency exchange system now implements a **4-level fallback architecture** 
   - Message: "Real-time rates are unavailable. Exchange rates may be outdated."
 
 ### Level 4: Offline Fallback (Last Resort)
+
 - **Fallback**: `{ baseCurrency: 1 }`
 - **Priority**: Only when cache doesn't exist
 - **Use case**: Brand new browser with zero cache history
@@ -62,17 +66,18 @@ Return Offline Fallback
 
 ### ✅ All Scenarios Covered
 
-| Scenario | Result | User Impact |
-|----------|--------|-------------|
-| Both APIs working | Live rates every 5 min | ✅ Accurate prices, updated frequently |
-| Primary down, fallback up | Live rates from backup | ✅ Accurate prices, slight delay |
-| Both APIs down, cache exists | Cached rates | ⚠️ Prices may be slightly outdated (see timestamp) |
-| Both APIs down, no cache | Fallback 1:1 | ❌ Prices for non-base currencies may be incorrect |
-| User offline (no connection) | Uses IndexedDB cache | ⚠️ Works offline with cached rates |
+| Scenario                     | Result                 | User Impact                                        |
+| ---------------------------- | ---------------------- | -------------------------------------------------- |
+| Both APIs working            | Live rates every 5 min | ✅ Accurate prices, updated frequently             |
+| Primary down, fallback up    | Live rates from backup | ✅ Accurate prices, slight delay                   |
+| Both APIs down, cache exists | Cached rates           | ⚠️ Prices may be slightly outdated (see timestamp) |
+| Both APIs down, no cache     | Fallback 1:1           | ❌ Prices for non-base currencies may be incorrect |
+| User offline (no connection) | Uses IndexedDB cache   | ⚠️ Works offline with cached rates                 |
 
 ### ✅ INR-Specific Protection
 
 If user selects INR:
+
 - Primary: `https://api.exchangerate.host/latest?base=INR`
 - Fallback: `https://api.frankfurter.app/latest?from=INR`
 - Cache: Stores historical INR rates with timestamp
@@ -88,6 +93,7 @@ interface RatesSource {
 ```
 
 Users are **always informed** of data freshness:
+
 - **Live** (green/normal): No notification
 - **Cache** (yellow): Warning toast with age
 - **Offline** (red): Error toast prompting reconnection
@@ -95,6 +101,7 @@ Users are **always informed** of data freshness:
 ### ✅ Auto-Recovery
 
 When APIs come back online:
+
 - React Query automatically refetches every 5 minutes
 - New rates replace cached data
 - Notification disappears automatically
@@ -121,6 +128,7 @@ When APIs come back online:
 ## Testing & Verification
 
 Run tests:
+
 ```bash
 pnpm test
 ```

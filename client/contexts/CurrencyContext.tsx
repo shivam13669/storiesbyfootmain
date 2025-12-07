@@ -46,9 +46,7 @@ const CURRENCY_SYMBOLS: Record<string, string> = {
   KWD: "د.ك",
 };
 
-async function fetchExchangeRates(
-  baseCurrency: string,
-): Promise<{
+async function fetchExchangeRates(baseCurrency: string): Promise<{
   rates: Record<string, number>;
   source: "live" | "cache" | "offline";
 }> {

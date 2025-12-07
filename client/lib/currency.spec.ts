@@ -9,8 +9,7 @@ describe("Currency System - Fallback & Cache Logic", () => {
     });
 
     it("should attempt Fallback API (frankfurter.app) on primary failure", () => {
-      const fallbackEndpoint =
-        "https://api.frankfurter.app/latest?from=INR";
+      const fallbackEndpoint = "https://api.frankfurter.app/latest?from=INR";
       expect(fallbackEndpoint).toContain("frankfurter.app");
       expect(fallbackEndpoint).toContain("from=INR");
     });
@@ -69,11 +68,7 @@ describe("Currency System - Fallback & Cache Logic", () => {
 
   describe("Production Safety", () => {
     it("should always provide some exchange rate (never undefined)", () => {
-      const rates = [
-        { USD: 1 },
-        { USD: 0.012 },
-        { INR: 1 },
-      ];
+      const rates = [{ USD: 1 }, { USD: 0.012 }, { INR: 1 }];
       rates.forEach((rate) => {
         expect(rate).toBeDefined();
         expect(Object.keys(rate).length).toBeGreaterThan(0);
