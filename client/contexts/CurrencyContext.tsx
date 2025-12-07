@@ -48,7 +48,10 @@ const CURRENCY_SYMBOLS: Record<string, string> = {
 
 async function fetchExchangeRates(
   baseCurrency: string,
-): Promise<Record<string, number>> {
+): Promise<{
+  rates: Record<string, number>;
+  source: "live" | "cache" | "offline";
+}> {
   try {
     const res = await fetch(
       `https://api.exchangerate.host/latest?base=${baseCurrency}`,
@@ -56,7 +59,9 @@ async function fetchExchangeRates(
     if (res.ok) {
       const data = await res.json();
       if (data && typeof data.rates === "object" && data.rates !== null) {
-        return data.rates as Record<string, number>;
+        const rates = data.rates as Record<string, number>;
+        await cacheRates(baseCurrency, rates);
+        return { rates, source: "live" };
       }
     }
   } catch (error) {
@@ -70,14 +75,27 @@ async function fetchExchangeRates(
     if (res.ok) {
       const data = await res.json();
       if (data && typeof data.rates === "object" && data.rates !== null) {
-        return data.rates as Record<string, number>;
+        const rates = data.rates as Record<string, number>;
+        await cacheRates(baseCurrency, rates);
+        return { rates, source: "live" };
       }
     }
   } catch (error) {
-    console.error("Fallback API failed", error);
+    console.error("Fallback API failed, checking cache...", error);
   }
 
-  return { [baseCurrency]: 1 };
+  const cached = await getCachedRates(baseCurrency);
+  if (cached && cached.rates && Object.keys(cached.rates).length > 0) {
+    console.warn(
+      `Using cached rates for ${baseCurrency} (${new Date(cached.timestamp).toLocaleString()})`,
+    );
+    return { rates: cached.rates, source: "cache" };
+  }
+
+  console.error(
+    `No rates available for ${baseCurrency}, using offline fallback`,
+  );
+  return { rates: { [baseCurrency]: 1 }, source: "offline" };
 }
 
 export function CurrencyProvider({ children }: { children: React.ReactNode }) {
