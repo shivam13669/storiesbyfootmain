@@ -56,7 +56,8 @@ const API_CONFIGS: APIConfig[] = [
     name: "exchangerate.host",
     url: (baseCurrency) =>
       `https://api.exchangerate.host/latest?base=${baseCurrency}`,
-    parser: (data) => (data.rates && typeof data.rates === "object" ? data.rates : null),
+    parser: (data) =>
+      data.rates && typeof data.rates === "object" ? data.rates : null,
     enabled: true,
   },
   {
@@ -129,7 +130,9 @@ function setCachedRates(
 
 async function fetchExchangeRates(
   baseCurrency: string,
-): Promise<Record<string, number> & { _apiBase?: string; _isCached?: boolean }> {
+): Promise<
+  Record<string, number> & { _apiBase?: string; _isCached?: boolean }
+> {
   // Try each API in order
   for (const config of API_CONFIGS) {
     if (!config.enabled) continue;
@@ -147,7 +150,11 @@ async function fetchExchangeRates(
         const data = await res.json();
         const rates = config.parser(data);
 
-        if (rates && typeof rates === "object" && Object.keys(rates).length > 0) {
+        if (
+          rates &&
+          typeof rates === "object" &&
+          Object.keys(rates).length > 0
+        ) {
           console.log(
             `[API] ✓ ${config.name} succeeded for ${baseCurrency} (${Object.keys(rates).length} rates)`,
           );
