@@ -61,13 +61,11 @@ const API_CONFIGS: APIConfig[] = [
     enabled: true,
   },
   {
-    name: "exchangerate-api.com",
-    url: (baseCurrency, apiKey) =>
-      `https://v6.exchangerate-api.com/v6/${apiKey || "free"}/latest/${baseCurrency}`,
+    name: "frankfurter.app",
+    url: (baseCurrency) =>
+      `https://api.frankfurter.app/latest?from=${baseCurrency}`,
     parser: (data) =>
-      data.conversion_rates && typeof data.conversion_rates === "object"
-        ? data.conversion_rates
-        : null,
+      data.rates && typeof data.rates === "object" ? data.rates : null,
     enabled: true,
   },
 ];
