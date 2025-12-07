@@ -42,79 +42,184 @@ const CURRENCY_SYMBOLS: Record<string, string> = {
   KWD: "د.ك",
 };
 
-// Offline fallback rates relative to USD (1 USD = X local currency)
-const OFFLINE_FALLBACK_RATES: Record<string, number> = {
-  USD: 1,
-  INR: 83.25,
-  EUR: 0.92,
-  GBP: 0.79,
-  AED: 3.67,
-  SGD: 1.35,
-  AUD: 1.52,
-  CAD: 1.36,
-  JPY: 149.5,
-  CNY: 7.24,
-  CHF: 0.88,
-  HKD: 7.81,
-  NZD: 1.67,
-  SEK: 10.5,
-  NOK: 10.72,
-  DKK: 6.86,
-  ZAR: 18.5,
-  THB: 35.8,
-  MYR: 4.72,
-  IDR: 16000,
-  LKR: 329,
-  BHD: 0.376,
-  QAR: 3.64,
-  OMR: 0.385,
-  KWD: 0.305,
-};
+// API Configuration - easily extensible for API keys
+interface APIConfig {
+  name: string;
+  url: (baseCurrency: string, apiKey?: string) => string;
+  parser: (data: any) => Record<string, number> | null;
+  apiKey?: string;
+  enabled?: boolean;
+}
+
+const API_CONFIGS: APIConfig[] = [
+  {
+    name: "exchangerate.host",
+    url: (baseCurrency) =>
+      `https://api.exchangerate.host/latest?base=${baseCurrency}`,
+    parser: (data) => (data.rates && typeof data.rates === "object" ? data.rates : null),
+    enabled: true,
+  },
+  {
+    name: "exchangerate-api.com",
+    url: (baseCurrency, apiKey) =>
+      `https://v6.exchangerate-api.com/v6/${apiKey || "free"}/latest/${baseCurrency}`,
+    parser: (data) =>
+      data.conversion_rates && typeof data.conversion_rates === "object"
+        ? data.conversion_rates
+        : null,
+    enabled: true,
+  },
+];
+
+interface CachedRatesData {
+  rates: Record<string, number>;
+  timestamp: number;
+  apiSource: string;
+}
+
+const CACHE_KEY = "currency_rates_cache";
+const CACHE_EXPIRY_MS = 1000 * 60 * 60; // 1 hour - rates become stale after 1 hour
+
+function getCachedRates(): CachedRatesData | null {
+  if (typeof window === "undefined") return null;
+
+  try {
+    const cached = localStorage.getItem(CACHE_KEY);
+    if (!cached) return null;
+
+    const data: CachedRatesData = JSON.parse(cached);
+    const ageMs = Date.now() - data.timestamp;
+
+    if (ageMs > CACHE_EXPIRY_MS) {
+      console.log(
+        `[CACHE] Rates expired (${Math.round(ageMs / 1000 / 60)} min old), will attempt fresh fetch`,
+      );
+      return null;
+    }
+
+    console.log(
+      `[CACHE] Using cached rates from ${data.apiSource} (${Math.round(ageMs / 1000)} sec old)`,
+    );
+    return data;
+  } catch {
+    return null;
+  }
+}
+
+function setCachedRates(
+  rates: Record<string, number>,
+  apiSource: string,
+): void {
+  if (typeof window === "undefined") return;
+
+  try {
+    const data: CachedRatesData = {
+      rates,
+      timestamp: Date.now(),
+      apiSource,
+    };
+    localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+    console.log(
+      `[CACHE] Saved fresh rates from ${apiSource} at ${new Date().toISOString()}`,
+    );
+  } catch (error) {
+    console.error("[CACHE] Failed to save rates:", error);
+  }
+}
 
 async function fetchExchangeRates(
   baseCurrency: string,
-): Promise<Record<string, number> & { _apiBase?: string }> {
-  try {
-    const res = await fetch(
-      `https://api.exchangerate.host/latest?base=${baseCurrency}`,
-    );
-    if (res.ok) {
-      const data = await res.json();
-      if (data.rates && typeof data.rates === "object") {
-        console.log(
-          `[PRIMARY API] Exchange rates fetched for base ${baseCurrency}:`,
-          Object.keys(data.rates).length,
-          "currencies",
-        );
-        const ratesWithMeta = data.rates as Record<string, number> & {
-          _apiBase?: string;
-        };
-        ratesWithMeta._apiBase = "exchangerate.host";
-        return ratesWithMeta;
+): Promise<Record<string, number> & { _apiBase?: string; _isCached?: boolean }> {
+  // Try each API in order
+  for (const config of API_CONFIGS) {
+    if (!config.enabled) continue;
+
+    try {
+      console.log(`[API] Attempting ${config.name}...`);
+      const url = config.url(baseCurrency, config.apiKey);
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+
+      const res = await fetch(url, { signal: controller.signal });
+      clearTimeout(timeoutId);
+
+      if (res.ok) {
+        const data = await res.json();
+        const rates = config.parser(data);
+
+        if (rates && typeof rates === "object" && Object.keys(rates).length > 0) {
+          console.log(
+            `[API] ✓ ${config.name} succeeded for ${baseCurrency} (${Object.keys(rates).length} rates)`,
+          );
+          setCachedRates(rates, config.name);
+          const ratesWithMeta = rates as Record<string, number> & {
+            _apiBase?: string;
+            _isCached?: boolean;
+          };
+          ratesWithMeta._apiBase = config.name;
+          ratesWithMeta._isCached = false;
+          return ratesWithMeta;
+        }
       }
+    } catch (error) {
+      console.log(
+        `[API] ✗ ${config.name} failed:`,
+        error instanceof Error ? error.message : String(error),
+      );
     }
-  } catch (error) {
-    console.error("[PRIMARY API] Failed:", error);
   }
 
-  if (process.env.NODE_ENV === "development") {
-    console.warn(
-      `Exchange rates for ${baseCurrency} unavailable from API, using offline fallback`,
-    );
+  // All live APIs failed - fallback to cache
+  console.log("[API] All live APIs exhausted, checking cache...");
+  const cached = getCachedRates();
+  if (cached) {
+    console.log(`[FALLBACK] Using cached rates from ${cached.apiSource}`);
+    const ratesWithMeta = cached.rates as Record<string, number> & {
+      _apiBase?: string;
+      _isCached?: boolean;
+    };
+    ratesWithMeta._apiBase = `${cached.apiSource} (cached)`;
+    ratesWithMeta._isCached = true;
+    return ratesWithMeta;
   }
 
-  // Build offline fallback rates relative to the selected base currency
-  const fallbackRates: Record<string, number> & { _apiBase?: string } = {
-    _apiBase: "offline-fallback",
+  // No cache and APIs failed - use hardcoded minimum fallback (safety net only)
+  console.warn(
+    "[FALLBACK] No APIs available and no cache - using hardcoded emergency rates",
+  );
+  const emergencyRates: Record<string, number> & {
+    _apiBase?: string;
+    _isCached?: boolean;
+  } = {
+    USD: 1,
+    INR: 83.25,
+    EUR: 0.92,
+    GBP: 0.79,
+    AED: 3.67,
+    SGD: 1.35,
+    AUD: 1.52,
+    CAD: 1.36,
+    JPY: 149.5,
+    CNY: 7.24,
+    CHF: 0.88,
+    HKD: 7.81,
+    NZD: 1.67,
+    SEK: 10.5,
+    NOK: 10.72,
+    DKK: 6.86,
+    ZAR: 18.5,
+    THB: 35.8,
+    MYR: 4.72,
+    IDR: 16000,
+    LKR: 329,
+    BHD: 0.376,
+    QAR: 3.64,
+    OMR: 0.385,
+    KWD: 0.305,
+    _apiBase: "emergency-hardcoded",
+    _isCached: true,
   };
-
-  const baseRate = OFFLINE_FALLBACK_RATES[baseCurrency] || 1;
-
-  for (const [code, rate] of Object.entries(OFFLINE_FALLBACK_RATES)) {
-    fallbackRates[code] = rate / baseRate;
-  }
-
-  return fallbackRates;
+  return emergencyRates;
 }
 
 export function CurrencyProvider({ children }: { children: React.ReactNode }) {
@@ -143,8 +248,9 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
       }
     }
     const apiBase = (rates as any)?._apiBase || "unknown";
+    const isCached = (rates as any)?._isCached ? "[CACHED]" : "";
     console.log(
-      `[RATES MAP] Built from ${apiBase} | INR=${map.INR} KWD=${map.KWD?.toFixed(6) || "N/A"}`,
+      `[RATES MAP] ${isCached} Built from ${apiBase} | INR=${map.INR} USD=${map.USD}`,
     );
     return map;
   }, [rates]);
