@@ -1,4 +1,4 @@
-const CACHE_KEY = 'currency_rates_cache';
+const CACHE_KEY = "currency_rates_cache";
 const CACHE_EXPIRY_MS = 24 * 60 * 60 * 1000; // 24 hours
 
 interface CachedRates {
@@ -51,7 +51,7 @@ function getCachedRates(): Record<string, number> | null {
       }
     }
   } catch (error) {
-    console.error('Error reading currency cache:', error);
+    console.error("Error reading currency cache:", error);
   }
   return null;
 }
@@ -61,15 +61,17 @@ function saveCachesRates(rates: Record<string, number>): void {
     const cacheData: CachedRates = {
       rates,
       timestamp: Date.now(),
-      baseRate: 'USD',
+      baseRate: "USD",
     };
     localStorage.setItem(CACHE_KEY, JSON.stringify(cacheData));
   } catch (error) {
-    console.error('Error saving currency cache:', error);
+    console.error("Error saving currency cache:", error);
   }
 }
 
-async function fetchLiveRates(baseCurrency: string = 'USD'): Promise<Record<string, number> | null> {
+async function fetchLiveRates(
+  baseCurrency: string = "USD",
+): Promise<Record<string, number> | null> {
   try {
     // Frankfurter API: https://api.frankfurter.app
     // Browser-safe, no API key required, no CORS restrictions
@@ -77,9 +79,9 @@ async function fetchLiveRates(baseCurrency: string = 'USD'): Promise<Record<stri
       `https://api.frankfurter.app/latest?from=${baseCurrency}`,
       {
         headers: {
-          'Accept': 'application/json',
+          Accept: "application/json",
         },
-      }
+      },
     );
 
     if (!response.ok) {
@@ -88,29 +90,31 @@ async function fetchLiveRates(baseCurrency: string = 'USD'): Promise<Record<stri
     }
 
     const data = await response.json();
-    
+
     // Frankfurter API response format:
     // { "amount": 1, "base": "USD", "date": "2024-01-01", "rates": { "EUR": 0.92, ... } }
-    if (data.rates && typeof data.rates === 'object') {
+    if (data.rates && typeof data.rates === "object") {
       const rates: Record<string, number> = {
         [baseCurrency]: 1, // Base currency is always 1
         ...data.rates,
       };
-      
+
       // Save to cache immediately on successful fetch
       saveCachesRates(rates);
-      
+
       return rates;
     }
 
     return null;
   } catch (error) {
-    console.error('Error fetching live exchange rates:', error);
+    console.error("Error fetching live exchange rates:", error);
     return null;
   }
 }
 
-export async function getExchangeRates(baseCurrency: string = 'USD'): Promise<Record<string, number>> {
+export async function getExchangeRates(
+  baseCurrency: string = "USD",
+): Promise<Record<string, number>> {
   // First, try to get cached rates
   const cachedRates = getCachedRates();
   if (cachedRates) {
@@ -124,7 +128,7 @@ export async function getExchangeRates(baseCurrency: string = 'USD'): Promise<Re
   }
 
   // Fallback to emergency rates only if both cache and API fail
-  console.warn('Using emergency hardcoded exchange rates');
+  console.warn("Using emergency hardcoded exchange rates");
   return EMERGENCY_RATES;
 }
 

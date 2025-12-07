@@ -51,7 +51,8 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
     return "USD";
   });
 
-  const [exchangeRates, setExchangeRates] = useState<Record<string, number>>(FALLBACK_RATES);
+  const [exchangeRates, setExchangeRates] =
+    useState<Record<string, number>>(FALLBACK_RATES);
   const [isLoadingRates, setIsLoadingRates] = useState(true);
 
   // Fetch exchange rates on component mount
