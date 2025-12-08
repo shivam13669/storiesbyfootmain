@@ -17,12 +17,23 @@ export default function Destinations() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [priceRange, setPriceRange] = useState("All");
   const [rating, setRating] = useState("All");
+  const [selectedRegion, setSelectedRegion] = useState("All");
+
+  const destinationRegions = [
+    "Ladakh",
+    "Tawang",
+    "Bhutan",
+    "Meghalaya",
+    "Nepal",
+    "Zanskar",
+  ];
 
   const destinations = [
     {
       id: 1,
       name: "Xtreme Ladakh Expedition",
       location: "India",
+      region: "Ladakh",
       image: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
       description:
         "Conquer Khardung La, trace the Shyok River, and camp under galaxy-bright skies at Pangong Tso",
@@ -35,6 +46,7 @@ export default function Destinations() {
       id: 2,
       name: "Ladakh Bike Adventure",
       location: "India",
+      region: "Ladakh",
       image: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
       description:
         "A spirited bike tour covering Magnetic Hill, Sangam, and the dunes of Hunder with backup vehicle support",
@@ -47,6 +59,7 @@ export default function Destinations() {
       id: 3,
       name: "Ladakh Highlights Private Tour",
       location: "India",
+      region: "Ladakh",
       image: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
       description:
         "Comfort-first itinerary with boutique stays, private SUV transfers, and immersive monastery visits",
@@ -59,6 +72,7 @@ export default function Destinations() {
       id: 4,
       name: "Tawang Monastery Trek",
       location: "India",
+      region: "Tawang",
       image: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
       description:
         "Explore the highest monastery in India and scenic mountain landscapes of Arunachal Pradesh",
@@ -71,6 +85,7 @@ export default function Destinations() {
       id: 5,
       name: "Bhutan Cultural Tour",
       location: "India",
+      region: "Bhutan",
       image: "linear-gradient(135deg, #30cfd0 0%, #330867 100%)",
       description:
         "Experience the kingdom of happiness with pristine nature and ancient Buddhist traditions",
@@ -83,6 +98,7 @@ export default function Destinations() {
       id: 6,
       name: "Meghalaya Living Roots Trek",
       location: "India",
+      region: "Meghalaya",
       image: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
       description:
         "Trek through living root bridges and misty hills in the wettest place on Earth",
@@ -95,6 +111,7 @@ export default function Destinations() {
       id: 7,
       name: "Nepal Everest Base Camp",
       location: "Nepal",
+      region: "Nepal",
       image: "linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%)",
       description:
         "Trek to the base camp of the world's highest mountain with experienced guides",
@@ -107,6 +124,7 @@ export default function Destinations() {
       id: 8,
       name: "Zanskar Winter Trek",
       location: "India",
+      region: "Zanskar",
       image: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
       description:
         "Traverse the frozen river of Zanskar Valley, one of the most thrilling treks in the world",
@@ -119,6 +137,7 @@ export default function Destinations() {
       id: 9,
       name: "Spiti Valley Exploration",
       location: "India",
+      region: "Spiti",
       image: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
       description:
         "Discover ancient monasteries, barren landscapes, and the mystical land of Spiti",
@@ -154,8 +173,16 @@ export default function Destinations() {
       (rating === "4.5+" && dest.rating >= 4.5) ||
       (rating === "4.7+" && dest.rating >= 4.7) ||
       (rating === "4.8+" && dest.rating >= 4.8);
+    const matchesRegion =
+      selectedRegion === "All" || dest.region === selectedRegion;
 
-    return matchesSearch && matchesCategory && matchesPrice && matchesRating;
+    return (
+      matchesSearch &&
+      matchesCategory &&
+      matchesPrice &&
+      matchesRating &&
+      matchesRegion
+    );
   });
 
   return (
