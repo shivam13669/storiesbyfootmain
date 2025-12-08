@@ -68,7 +68,6 @@ export const FLAG_BY_CURRENCY: Record<string, string> = {
   BHD: "BH",
   QAR: "QA",
   OMR: "OM",
-  KWD: "KW",
 };
 
 export function getCurrencyByCode(code: string): Currency {
