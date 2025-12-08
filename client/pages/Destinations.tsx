@@ -187,18 +187,6 @@ export default function Destinations() {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 to-orange-50 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-4">
-            Explore Destinations
-          </h1>
-          <p className="text-gray-600 max-w-2xl">
-            Find your perfect travel destination from our curated collection
-          </p>
-        </div>
-      </section>
-
       {/* Destination Chooser */}
       <section className="bg-white border-b border-gray-200 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
