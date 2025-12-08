@@ -128,3 +128,41 @@
     @apply transition-colors;
   }
 }
+
+@layer components {
+  @keyframes floating {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes floating-delayed {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+
+  .floating-animation {
+    animation: floating 3s ease-in-out infinite;
+  }
+
+  .floating-animation-delayed {
+    animation: floating-delayed 3.5s ease-in-out infinite;
+  }
+
+  .shadow-card {
+    @apply shadow-lg;
+  }
+
+  .shadow-card-hover {
+    @apply shadow-2xl;
+  }
+}

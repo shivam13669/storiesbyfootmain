@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
+import FloatingDestinations from "@/components/FloatingDestinations";
 import { useCurrency } from "@/contexts/CurrencyContext";
 import {
   Search,
@@ -126,11 +127,15 @@ export default function Index() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -mr-48 -mt-48"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl -ml-48 -mb-48"></div>
 
+        {/* Floating Destinations */}
+        <FloatingDestinations />
+
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center">
           {/* Hero Content */}
           <div className="text-center mb-12">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-display font-bold text-foreground mb-6">
-              Explore Your <span className="text-primary">Next Adventure</span>
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-body font-semibold text-foreground mb-6">
+              Explore Your <br /> Next{" "}
+              <span className="text-primary">Adventure</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-8">
               Discover extraordinary destinations, create unforgettable memories
