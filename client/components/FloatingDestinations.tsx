@@ -2,13 +2,13 @@ const leftDestinations = [
   {
     id: 1,
     image:
-      "https://images.unsplash.com/photo-1512207736139-6ea0141e038e?w=300&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=300&h=300&fit=crop",
     name: "Singapore",
   },
   {
     id: 2,
     image:
-      "https://images.unsplash.com/photo-1512453333346-e8e99a58f644?w=300&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1518684029980-cf92db92df51?w=300&h=300&fit=crop",
     name: "Dubai",
   },
   {
