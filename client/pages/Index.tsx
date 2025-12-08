@@ -134,7 +134,7 @@ export default function Index() {
           {/* Hero Content */}
           <div className="text-center mb-12">
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-display font-bold text-foreground mb-6">
-              Explore Your <span className="text-primary">Next Adventure</span>
+              Explore Your <br /> Next <span className="text-primary">Adventure</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-8">
               Discover extraordinary destinations, create unforgettable memories
