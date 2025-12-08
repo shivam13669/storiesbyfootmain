@@ -31,7 +31,6 @@ export const CURRENCIES: Currency[] = [
   { code: "BHD", name: "Bahraini Dinar", symbol: "د.ب" },
   { code: "QAR", name: "Qatari Riyal", symbol: "ر.ق" },
   { code: "OMR", name: "Omani Rial", symbol: "ر.ع." },
-  { code: "KWD", name: "Kuwaiti Dinar", symbol: "د.ك" },
 ];
 
 export const COMMON_CODES = [
