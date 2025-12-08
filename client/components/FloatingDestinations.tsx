@@ -2,25 +2,25 @@ const leftDestinations = [
   {
     id: 1,
     image:
-      "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=300&h=300&fit=crop",
+      "https://cdn.builder.io/api/v1/image/assets%2F2a56cdad82ba4b609d03ed63f0f0a73d%2Fc4d6c68d589a481ebae7de8e8c5e5011?format=webp&width=800",
     name: "Singapore",
   },
   {
     id: 2,
     image:
-      "https://images.unsplash.com/photo-1518684029980-cf92db92df51?w=300&h=300&fit=crop",
+      "https://cdn.builder.io/api/v1/image/assets%2F2a56cdad82ba4b609d03ed63f0f0a73d%2Fb4a89e24f0804345811e93987414963b?format=webp&width=800",
     name: "Dubai",
   },
   {
     id: 3,
     image:
-      "https://images.unsplash.com/photo-1537225228614-56cc3556d7ed?w=300&h=300&fit=crop",
+      "https://cdn.builder.io/api/v1/image/assets%2F2a56cdad82ba4b609d03ed63f0f0a73d%2F11ee7276db324031951861f3a2fed899?format=webp&width=800",
     name: "Bali",
   },
   {
     id: 4,
     image:
-      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=300&h=300&fit=crop",
+      "https://cdn.builder.io/api/v1/image/assets%2F2a56cdad82ba4b609d03ed63f0f0a73d%2F9cf275092a664f18acd095c989ef2f31?format=webp&width=800",
     name: "Paris",
   },
 ];
@@ -29,25 +29,25 @@ const rightDestinations = [
   {
     id: 5,
     image:
-      "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=300&h=300&fit=crop",
+      "https://cdn.builder.io/api/v1/image/assets%2F2a56cdad82ba4b609d03ed63f0f0a73d%2F39cd2174de8a455c9806126c0720d89d?format=webp&width=800",
     name: "London",
   },
   {
     id: 6,
     image:
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=300&fit=crop",
+      "https://cdn.builder.io/api/v1/image/assets%2F2a56cdad82ba4b609d03ed63f0f0a73d%2F5150216d64fa47c68998edd830d5cc58?format=webp&width=800",
     name: "India",
   },
   {
     id: 7,
     image:
-      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=300&h=300&fit=crop",
+      "https://cdn.builder.io/api/v1/image/assets%2F2a56cdad82ba4b609d03ed63f0f0a73d%2F9cf275092a664f18acd095c989ef2f31?format=webp&width=800",
     name: "Paris",
   },
   {
     id: 8,
     image:
-      "https://images.unsplash.com/photo-1537225228614-56cc3556d7ed?w=300&h=300&fit=crop",
+      "https://cdn.builder.io/api/v1/image/assets%2F2a56cdad82ba4b609d03ed63f0f0a73d%2F11ee7276db324031951861f3a2fed899?format=webp&width=800",
     name: "Bali",
   },
 ];
