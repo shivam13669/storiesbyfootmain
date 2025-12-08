@@ -131,7 +131,8 @@
 
 @layer components {
   @keyframes floating {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateY(0px);
     }
     50% {
@@ -140,7 +141,8 @@
   }
 
   @keyframes floating-delayed {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateY(0px);
     }
     50% {
