@@ -133,7 +133,7 @@ export default function Index() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center">
           {/* Hero Content */}
           <div className="text-center mb-12">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-body font-bold text-foreground mb-6">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-body font-semibold text-foreground mb-6">
               Explore Your <br /> Next <span className="text-primary">Adventure</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-8">
