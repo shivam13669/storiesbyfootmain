@@ -95,10 +95,9 @@ export default function FloatingDestinations() {
           {rightDestinations.slice(0, 3).map((dest, index) => (
             <div
               key={dest.id}
-              className={`w-24 h-24 rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 cursor-pointer floating-animation ${
+              className={`w-24 h-24 rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 cursor-pointer ${
                 index === 1 ? "mt-6" : ""
               }`}
-              style={{ animationDelay: `${index * 0.5}s` }}
             >
               <img
                 src={dest.image}
@@ -112,8 +111,7 @@ export default function FloatingDestinations() {
           {rightDestinations.slice(1, 3).map((dest, index) => (
             <div
               key={dest.id + 10}
-              className="w-20 h-20 rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 cursor-pointer floating-animation-delayed"
-              style={{ animationDelay: `${(index + 2) * 0.5}s` }}
+              className="w-20 h-20 rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 cursor-pointer"
             >
               <img
                 src={dest.image}
