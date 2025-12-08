@@ -377,7 +377,7 @@ export default function Destinations() {
                             <span className="text-2xl font-bold text-primary">
                               {getSymbol(currency)}
                               {Math.round(
-                                convertPrice(destination.price, "USD"),
+                                convertPrice(destination.price, "INR"),
                               )}
                             </span>
                             <div className="text-primary group-hover:translate-x-2 transition-transform">
