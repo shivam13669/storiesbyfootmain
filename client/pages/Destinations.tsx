@@ -199,6 +199,40 @@ export default function Destinations() {
         </div>
       </section>
 
+      {/* Destination Chooser */}
+      <section className="bg-white border-b border-gray-200 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-xl font-bold text-foreground mb-6">
+            Choose Your Destination
+          </h2>
+          <div className="flex flex-wrap gap-3">
+            <button
+              onClick={() => setSelectedRegion("All")}
+              className={`px-6 py-2 rounded-full font-semibold transition-all duration-200 ${
+                selectedRegion === "All"
+                  ? "bg-primary text-primary-foreground shadow-md"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              }`}
+            >
+              All Destinations
+            </button>
+            {destinationRegions.map((region) => (
+              <button
+                key={region}
+                onClick={() => setSelectedRegion(region)}
+                className={`px-6 py-2 rounded-full font-semibold transition-all duration-200 ${
+                  selectedRegion === region
+                    ? "bg-primary text-primary-foreground shadow-md"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                }`}
+              >
+                {region}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Main Content */}
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
