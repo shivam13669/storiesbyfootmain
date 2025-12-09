@@ -62,8 +62,7 @@ const API_CONFIGS: APIConfig[] = [
   },
   {
     name: "open.er-api.com",
-    url: (baseCurrency) =>
-      `https://open.er-api.com/v6/latest/${baseCurrency}`,
+    url: (baseCurrency) => `https://open.er-api.com/v6/latest/${baseCurrency}`,
     parser: (data) =>
       data.rates && typeof data.rates === "object" ? data.rates : null,
     enabled: true,
