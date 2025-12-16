@@ -1,6 +1,5 @@
 import { useLocation, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Layout from "@/components/Layout";
 import { Home, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -79,8 +78,7 @@ const NotFound = () => {
   };
 
   return (
-    <Layout>
-      <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-purple-50 to-orange-50 dark:from-slate-900 dark:via-purple-900 dark:to-slate-900 px-4 relative overflow-hidden">
+    <section className="h-screen w-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-purple-50 to-orange-50 dark:from-slate-900 dark:via-purple-900 dark:to-slate-900 px-4 relative overflow-hidden">
         {/* Animated background elements */}
         <motion.div
           className="absolute top-10 left-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl"
@@ -253,7 +251,6 @@ const NotFound = () => {
           </motion.p>
         </motion.div>
       </section>
-    </Layout>
   );
 };
 
